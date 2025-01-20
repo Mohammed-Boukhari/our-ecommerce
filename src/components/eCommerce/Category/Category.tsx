@@ -1,16 +1,21 @@
+import { Link } from "react-router-dom";
 import styles from "./style.module.css";
 const { category, categoryImg, categoryTitle } = styles;
+interface IProps {
+  title: string;
+  img: string;
+  prefix: string;
+}
 
-const Category = () => {
+const Category = ({ title, img, prefix }: IProps) => {
   return (
     <div className={category}>
-      <div className={categoryImg}>
-        <img
-          src="https://cdn-eu.dynamicyield.com/api/9876644/images/244c68ad42d8b__hp-w12-22032022-h_m-women_shirts-blouses.jpg"
-          alt=""
-        />
-      </div>
-      <h4 className={categoryTitle}>Title</h4>
+      <Link to={`/categories/products/${prefix}`}>
+        <div className={categoryImg}>
+          <img src={img} />
+        </div>
+        <h4 className={categoryTitle}>{title}</h4>
+      </Link>
     </div>
   );
 };
