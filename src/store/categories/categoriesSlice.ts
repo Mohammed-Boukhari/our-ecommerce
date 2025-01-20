@@ -1,6 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
+interface ICategories {
+    records: { id: number; title: string; prefix: string; img: string }[];
+    loading: "idle" | "pending" | "succeeded" | "failed";
+    error: string | null;
+}
+
+const initialState: ICategories = {
     records: [],
     loading: "idle",
     error: null,
