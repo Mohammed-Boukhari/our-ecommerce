@@ -11,8 +11,10 @@ const Categories = () => {
   );
 
   useEffect(() => {
-    dispatch(actGetCategories());
-  }, [dispatch]);
+    if (records.length === 0) {
+      dispatch(actGetCategories());
+    }
+  }, [dispatch, records]);
 
   const categoriesList =
     records.length > 0
