@@ -1,10 +1,13 @@
 import { Row, Col } from "react-bootstrap";
-import { TCategory } from "@customTypes/category";
-type TGridListProps = {
-  records: TCategory[];
-  renderItem: (record: TCategory) => React.ReactNode;
+
+type TGridListProps<T> = {
+  records: T[];
+  renderItem: (record: T) => React.ReactNode;
 };
-const GridList = ({ records, renderItem }: TGridListProps) => {
+
+type THasId = { id?: number };
+
+const GridList = <T extends THasId>({ records , renderItem , }: TGridListProps<T>) => {
   const categoriesList =
     records.length > 0
       ? records.map((record) => {
@@ -25,3 +28,4 @@ const GridList = ({ records, renderItem }: TGridListProps) => {
 };
 
 export default GridList;
+// Permission
