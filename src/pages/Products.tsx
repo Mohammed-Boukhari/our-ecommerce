@@ -6,6 +6,7 @@ import {
   actGetProductsByCatPrefix,
   productsCleanUp,
 } from "@store/products/productsSlice";
+import { Loading } from "@components/feedback";
 
 import { Container, Row, Col } from "react-bootstrap";
 import { Product } from "@components/eCommerce";
@@ -40,7 +41,9 @@ const Products = () => {
 
   return (
     <Container>
-      <Row>{productsList}</Row>
+      <Loading status={loading} error={error}>
+        <Row>{productsList}</Row>
+      </Loading>
     </Container>
   );
 };

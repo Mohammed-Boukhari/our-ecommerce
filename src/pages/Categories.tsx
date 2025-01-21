@@ -4,6 +4,7 @@ import { actGetCategories } from "@store/categories/categoriesSlice";
 import { Container, Row, Col } from "react-bootstrap";
 import { Category } from "@components/eCommerce";
 import { useEffect } from "react";
+import { Loading } from "@components/feedback";
 const Categories = () => {
   const dispatch = useAppDispatch();
   const { loading, error, records } = useAppSelector(
@@ -34,7 +35,9 @@ const Categories = () => {
 
   return (
     <Container>
-      <Row>{categoriesList}</Row>
+      <Loading status={loading} error={error}>
+        <Row>{categoriesList}</Row>
+      </Loading>
     </Container>
   );
 };
