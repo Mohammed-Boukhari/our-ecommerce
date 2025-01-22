@@ -28,4 +28,3 @@ const GridList = <T extends THasId>({ records , renderItem , }: TGridListProps<T
 };
 
 export default GridList;
-// Permission
