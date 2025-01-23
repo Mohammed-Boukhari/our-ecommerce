@@ -10,10 +10,20 @@ const rootPersistConfig = {
   key: "root",
   storage,
   whiteList: ["cart"],
-  // blacklist: ["cart"],
+  // blacklist: ["cart"]
 };
 
-const rootReducer = combineReducers({ categories, products, cart });
+const cartPersistConfig = {
+  key: "cart",
+  storage,
+  whiteList: ["items"],
+};
+
+const rootReducer = combineReducers({
+  categories,
+  products,
+  cart: persistReducer(cartPersistConfig, cart),
+});
 const persistedReducer = persistReducer(rootPersistConfig, rootReducer);
 
 const store = configureStore({
