@@ -6,3 +6,4 @@ axios
 bootstrap
 react-bootstrap
 react-redux
+redux-persist
