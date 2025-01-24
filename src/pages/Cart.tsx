@@ -9,7 +9,7 @@ const Cart = () => {
 
   useEffect(() => {
     dispatch(actGetProductsByItems());
-  }, [dispatch, ]);
+  }, [dispatch]);
 
   return (
     <>

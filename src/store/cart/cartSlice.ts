@@ -1,17 +1,24 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getCartTotalQuantitySelector, itemQuantityAvailabilityCheckingSelector, } from "./selector";
+import {
+  getCartTotalQuantitySelector,
+  itemQuantityAvailabilityCheckingSelector,
+} from "./selector";
 import actGetProductsByItems from "./act/actGetProductsByItems";
 import { TProduct } from "@customTypes/product";
-
+import { TLoading } from "@customTypes/shared";
 
 interface ICartState {
   items: { [key: string]: number };
   productFullInfo: TProduct[];
+  loading: TLoading;
+  error: string | null;
 }
 
 const initialState: ICartState = {
   items: {},
   productFullInfo: [],
+  loading: "idle",
+  error: null,
 };
 
 const cartSlice = createSlice({
@@ -28,8 +35,26 @@ const cartSlice = createSlice({
       }
     },
   },
+  extraReducers: (builder) => {
+    builder.addCase(actGetProductsByItems.pending, (state) => {
+      state.loading = "pending";
+      state.error = null;
+    });
+    builder.addCase(actGetProductsByItems.fulfilled, (state, action) => {
+      state.loading = "succeeded";
+      state.productFullInfo = action.payload;
+    });
+    builder.addCase(actGetProductsByItems.rejected, (state, action) => {
+      state.loading = "failed";
+      state.error = action.payload as string;
+    });
+  },
 });
 
-export { getCartTotalQuantitySelector, actGetProductsByItems, itemQuantityAvailabilityCheckingSelector, };
+export {
+  getCartTotalQuantitySelector,
+  actGetProductsByItems,
+  itemQuantityAvailabilityCheckingSelector,
+};
 export const { addToCart } = cartSlice.actions;
 export default cartSlice.reducer;
