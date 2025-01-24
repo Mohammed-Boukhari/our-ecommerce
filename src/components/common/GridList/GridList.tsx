@@ -7,7 +7,10 @@ type TGridListProps<T> = {
 
 type THasId = { id?: number };
 
-const GridList = <T extends THasId>({ records , renderItem , }: TGridListProps<T>) => {
+const GridList = <T extends THasId>({
+  records,
+  renderItem,
+}: TGridListProps<T>) => {
   const categoriesList =
     records.length > 0
       ? records.map((record) => {

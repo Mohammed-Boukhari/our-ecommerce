@@ -11,7 +11,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <Provider store={store}>
-    <PersistGate loading={null} persistor={persister} >
+    <PersistGate loading={null} persistor={persister}>
       <AppRouter />
     </PersistGate>
   </Provider>
