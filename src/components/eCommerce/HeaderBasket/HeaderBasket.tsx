@@ -5,7 +5,7 @@ import { getCartTotalQuantitySelector } from "@store/cart/cartSlice";
 import Logo from "@assets/svg/cart.svg?react";
 import style from "./style.module.css";
 
-const { basketContainer, basketQuantity, pumpCartQuantity } = style;
+const { basketContainer, basketQuantity, pumpCartQuantity, basketCart } = style;
 
 const HeaderBasket = () => {
   // FIXME: ANIMATION To Cart Quantity and Quantity
@@ -31,8 +31,11 @@ const HeaderBasket = () => {
 
   return (
     <div className={basketContainer}>
-      <Logo title="basket icon" />
-      <div className={quantityStyle}>{totalQuantity}</div>
+      <div className={basketCart}>
+        <Logo title="basket icon" />
+        <div className={quantityStyle}>{totalQuantity}</div>
+      </div>
+      <h3>Cart</h3>
     </div>
   );
 };
