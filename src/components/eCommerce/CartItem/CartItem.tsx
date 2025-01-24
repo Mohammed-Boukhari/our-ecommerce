@@ -1,4 +1,4 @@
-import { Button } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import styles from "./style.module.css";
 import { TProduct } from "@customTypes/product";
 
@@ -7,7 +7,18 @@ const { cartItem, product, productImg, productInfo, cartItemSelection } =
 
 type TCartItemProps = TProduct;
 
-const CartItem = ({ title, img, price }: TCartItemProps) => {
+const CartItem = ({ title, img, price, max, quantity }: TCartItemProps) => {
+  const renderOptions = Array(max)
+    .fill(0)
+    .map((_, index) => {
+      const quantity = index++;
+      return (
+        <option key={quantity} value={quantity}>
+          {quantity}
+        </option>
+      );
+    });
+
   return (
     <div className={cartItem}>
       <div className={product}>
@@ -30,9 +41,7 @@ const CartItem = ({ title, img, price }: TCartItemProps) => {
 
       <div className={cartItemSelection}>
         <span className="d-block mb-1">Quantity</span>
-        {/* <Form.Select value={quantity} onChange={changeQuantity}>
-          {renderOptions}
-        </Form.Select> */}
+        <Form.Select value={quantity}>{renderOptions}</Form.Select>
       </div>
     </div>
   );

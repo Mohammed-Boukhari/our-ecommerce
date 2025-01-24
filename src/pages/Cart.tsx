@@ -1,5 +1,5 @@
 import { Heading } from "@components/common";
-import { CartItem, CartItemList, CartSubtotalPrice } from "@components/eCommerce";
+import { CartItemList, CartSubtotalPrice } from "@components/eCommerce";
 import { Loading } from "@components/feedback";
 import { actGetProductsByItems } from "@store/cart/cartSlice";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
