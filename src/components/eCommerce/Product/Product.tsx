@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import { useAppDispatch } from "@store/hooks";
 import { addToCart } from "@store/cart/cartSlice";
 import { Button, Spinner } from "react-bootstrap";
@@ -6,29 +6,32 @@ import { TProduct } from "@customTypes/product";
 
 import styles from "./style.module.css";
 
-const { product, productImg } = styles;
+const { product, productImg, maximumNotice } = styles;
 
-const Product = ({ title, price, img, id }: TProduct) => {
+const Product = memo(({ title, price, img, id, max, quantity }: TProduct) => {
   const dispatch = useAppDispatch();
 
-  const [isBTNClicked, setIsBTNClicked] = useState(0);
   const [isBTNDisabled, setIsBTNDisabled] = useState(false);
 
+  const currentRemainingQuantity = max - (quantity ?? 0);
+  const quantityReachedToMax = currentRemainingQuantity <= 0 ? true : false;
+
   useEffect(() => {
-    if (!isBTNClicked) {
+    if (!isBTNDisabled) {
       return;
     }
+
     setIsBTNDisabled(true);
     const debounce = setTimeout(() => {
       setIsBTNDisabled(false);
     }, 300);
 
     return () => clearTimeout(debounce);
-  }, [isBTNClicked]);
+  }, [isBTNDisabled]);
 
   const addToCartHandler = () => {
     dispatch(addToCart(id));
-    setIsBTNClicked((prev) => prev + 1);
+    setIsBTNDisabled(true);
   };
 
   return (
@@ -38,11 +41,16 @@ const Product = ({ title, price, img, id }: TProduct) => {
       </div>
       <h2 title={title}>{title}</h2>
       <h3>{price}</h3>
+      <p className={maximumNotice}>
+        {quantityReachedToMax
+          ? "You reach to the limit"
+          : `You can add ${currentRemainingQuantity} item(s)`}
+      </p>
       <Button
         onClick={addToCartHandler}
         variant="info"
         style={{ color: "white" }}
-        disabled={isBTNDisabled}
+        disabled={isBTNDisabled || quantityReachedToMax}
       >
         {isBTNDisabled ? (
           <>
@@ -54,6 +62,6 @@ const Product = ({ title, price, img, id }: TProduct) => {
       </Button>
     </div>
   );
-};
+});
 
 export default Product;
