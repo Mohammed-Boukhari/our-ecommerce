@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import { useAppSelector } from "@store/hooks";
 import { getCartTotalQuantitySelector } from "@store/cart/cartSlice";
 
@@ -8,6 +10,7 @@ import style from "./style.module.css";
 const { basketContainer, basketQuantity, pumpCartQuantity, basketCart } = style;
 
 const HeaderBasket = () => {
+  const navigate = useNavigate();
   // FIXME: ANIMATION To Cart Quantity and Quantity
   const [isAnimate, setIsAnimate] = useState(false);
   const totalQuantity = useAppSelector(getCartTotalQuantitySelector);
@@ -27,10 +30,10 @@ const HeaderBasket = () => {
 
     return () => clearTimeout(debounce);
   }, [totalQuantity]);
-  // End ANIMATION ===
+  // End ANIMATION ===//
 
   return (
-    <div className={basketContainer}>
+    <div className={basketContainer} onClick={() => navigate("/cart")}>
       <div className={basketCart}>
         <Logo title="basket icon" />
         <div className={quantityStyle}>{totalQuantity}</div>
