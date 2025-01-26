@@ -1,12 +1,13 @@
+import { useCallback, useEffect } from "react";
 import { Heading } from "@components/common";
 import { CartItemList, CartSubtotalPrice } from "@components/eCommerce";
 import { Loading } from "@components/feedback";
 import {
   actGetProductsByItems,
   cartItemChangeQuantity,
+  cartItemRemove,
 } from "@store/cart/cartSlice";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
-import { useCallback, useEffect } from "react";
 
 const Cart = () => {
   const dispatch = useAppDispatch();
@@ -30,6 +31,11 @@ const Cart = () => {
     [dispatch]
   );
 
+  const removeItemHandler = useCallback((id: number) => {
+    console.log(id);
+    dispatch(cartItemRemove(id));
+  }, [dispatch]);
+
   return (
     <>
       <Heading>Cart</Heading>
@@ -38,6 +44,7 @@ const Cart = () => {
           <CartItemList
             products={products}
             changeQuantityHandler={changeQuantityHandler}
+            removeItemHandler={removeItemHandler}
           />
           <CartSubtotalPrice />
         </>
