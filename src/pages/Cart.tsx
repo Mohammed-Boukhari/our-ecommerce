@@ -6,13 +6,14 @@ import {
   cartItemChangeQuantity,
 } from "@store/cart/cartSlice";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 
 const Cart = () => {
   const dispatch = useAppDispatch();
   const { items, productFullInfo, loading, error } = useAppSelector(
     (state) => state.cart
   );
+
   useEffect(() => {
     dispatch(actGetProductsByItems());
   }, [dispatch]);
@@ -22,9 +23,12 @@ const Cart = () => {
     quantity: items[el.id],
   }));
 
-  const changeQuantityHandler = (id: number, quantity: number) => {
-    dispatch(cartItemChangeQuantity({ id, quantity }));
-  };
+  const changeQuantityHandler = useCallback(
+    (id: number, quantity: number) => {
+      dispatch(cartItemChangeQuantity({ id, quantity }));
+    },
+    [dispatch]
+  );
 
   return (
     <>
