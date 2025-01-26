@@ -1,7 +1,7 @@
 import ReactDOM from "react-dom/client";
 import AppRouter from "./router/AppRouter";
 // FIXME: Axios
-import "./API/axios-global.js";
+import "./services/axios-global.js";
 
 // FIXME: Redux Toolkit
 import { Provider } from "react-redux";

@@ -5,9 +5,21 @@ import { TProduct } from "@customTypes/product";
 const { cartItem, product, productImg, productInfo, cartItemSelection } =
   styles;
 
-type TCartItemProps = TProduct;
+type TCartItemProps = TProduct & {
+  changeQuantityHandler: (id: number, quantity: number) => void;
+};
 
-const CartItem = ({ title, img, price, max, quantity }: TCartItemProps) => {
+const CartItem = ({
+  id,
+  title,
+  img,
+  price,
+  max,
+  quantity,
+  changeQuantityHandler,
+}: TCartItemProps) => {
+  console.log("render");
+  // TODO: render option List
   const renderOptions = Array(max)
     .fill(0)
     .map((_, index) => {
@@ -18,6 +30,11 @@ const CartItem = ({ title, img, price, max, quantity }: TCartItemProps) => {
         </option>
       );
     });
+
+  const changeQuantity = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const quantity = +event.target.value;
+    changeQuantityHandler(id, quantity);
+  };
 
   return (
     <div className={cartItem}>
@@ -41,7 +58,9 @@ const CartItem = ({ title, img, price, max, quantity }: TCartItemProps) => {
 
       <div className={cartItemSelection}>
         <span className="d-block mb-1">Quantity</span>
-        <Form.Select value={quantity}>{renderOptions}</Form.Select>
+        <Form.Select value={quantity} onChange={changeQuantity}>
+          {renderOptions}
+        </Form.Select>
       </div>
     </div>
   );
