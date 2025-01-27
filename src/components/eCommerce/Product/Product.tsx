@@ -6,7 +6,6 @@ import { Button, Spinner } from "react-bootstrap";
 import { TProduct } from "@customTypes/product";
 // FIXME: import svg element for product
 import Like from "@assets/svg/like.svg?react";
-// import LikeFill from "@assets/svg/like-fill.svg?react";
 
 import styles from "./style.module.css";
 
