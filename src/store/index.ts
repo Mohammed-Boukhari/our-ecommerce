@@ -19,14 +19,19 @@ import wishlist from "./wishlist/wishlistSlice";
 const cartPersistConfig = {
   key: "cart",
   storage,
-  whiteList: ["items"],
+  whitelist: ["items"],
+};
+const wishlistPersistConfig = {
+  key: "wishlist",
+  storage,
+  whitelist: ["itemsId"],
 };
 
 const rootReducer = combineReducers({
   categories,
   products,
   cart: persistReducer(cartPersistConfig, cart),
-  wishlist
+  wishlist: persistReducer(wishlistPersistConfig, wishlist),
 });
 
 const store = configureStore({
