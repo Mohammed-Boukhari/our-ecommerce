@@ -36,7 +36,7 @@ const HeaderBasket = () => {
         <Logo title="basket icon" />
         {totalQuantity > 0 && (
           <div className={quantityStyle}>{totalQuantity}</div>
-        ) }
+        )}
       </div>
       <h3>Cart</h3>
     </div>

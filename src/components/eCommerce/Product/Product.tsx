@@ -49,7 +49,6 @@ const Product = memo(
           .then(() => setIsLoading(false))
           .catch(() => setIsLoading(false));
       }
-      
     };
 
     return (
