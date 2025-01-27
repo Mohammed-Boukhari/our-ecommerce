@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
+import actGetProductsByItems from "./act/actGetProductsByItems";
 import {
   getCartTotalQuantitySelector,
   itemQuantityAvailabilityCheckingSelector,
 } from "./selector";
-import actGetProductsByItems from "./act/actGetProductsByItems";
 import { TProduct } from "@customTypes/product";
 import { TLoading } from "@customTypes/shared";
 
@@ -27,7 +27,7 @@ const cartSlice = createSlice({
   reducers: {
     addToCart: (state, action) => {
       const id = action.payload;
-      console.log(action.payload);
+
       if (state.items[id]) {
         state.items[id]++;
       } else {
@@ -38,7 +38,7 @@ const cartSlice = createSlice({
       state.items[action.payload.id] = action.payload.quantity;
     },
     cartItemRemove: (state, action) => {
-      delete state.items[action.payload.id];
+      delete state.items[action.payload];
       state.productFullInfo = state.productFullInfo.filter(
         (el) => el.id !== action.payload
       );

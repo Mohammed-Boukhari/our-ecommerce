@@ -31,22 +31,30 @@ const Cart = () => {
     [dispatch]
   );
 
-  const removeItemHandler = useCallback((id: number) => {
-    console.log(id);
-    dispatch(cartItemRemove(id));
-  }, [dispatch]);
+  const removeItemHandler = useCallback(
+    (id: number) => {
+      dispatch(cartItemRemove(id));
+    },
+    [dispatch]
+  );
 
   return (
     <>
       <Heading>Cart</Heading>
       <Loading status={loading} error={error}>
         <>
-          <CartItemList
-            products={products}
-            changeQuantityHandler={changeQuantityHandler}
-            removeItemHandler={removeItemHandler}
-          />
-          <CartSubtotalPrice products={products} />
+          {products.length === 0 ? (
+            "Your cart is empty"
+          ) : (
+            <>
+              <CartItemList
+                products={products}
+                changeQuantityHandler={changeQuantityHandler}
+                removeItemHandler={removeItemHandler}
+              />
+              <CartSubtotalPrice products={products} />
+            </>
+          )}
         </>
       </Loading>
     </>
