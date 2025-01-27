@@ -29,7 +29,7 @@ const HeaderWishlist = () => {
   // End ANIMATION ===//
 
   return (
-    <div className={container} onClick={() => navigate("/cart")}>
+    <div className={container} onClick={() => navigate("/wishlist")}>
       <div className={iconWrapper}>
         <Wishlist />
         {totalQuantity.length > 0 ? (
