@@ -1,6 +1,7 @@
 import { memo, useEffect, useState } from "react";
 import { useAppDispatch } from "@store/hooks";
 import { addToCart } from "@store/cart/cartSlice";
+import { actLikeToggle } from "@store/wishlist/wishlistSlice";
 
 import { Button, Spinner } from "react-bootstrap";
 import { TProduct } from "@customTypes/product";
@@ -36,10 +37,13 @@ const Product = memo(({ title, price, img, id, max, quantity }: TProduct) => {
     dispatch(addToCart(id));
     setIsBTNDisabled(true);
   };
+  const actLikeToggleHandler = () => {
+    dispatch(actLikeToggle(id))
+  };
 
   return (
     <div className={product}>
-      <div className={wishListBTN}>
+      <div className={wishListBTN} onClick={actLikeToggleHandler}>
         <Like />
       </div>
       <div className={productImg}>
