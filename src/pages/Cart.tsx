@@ -46,7 +46,7 @@ const Cart = () => {
             changeQuantityHandler={changeQuantityHandler}
             removeItemHandler={removeItemHandler}
           />
-          <CartSubtotalPrice />
+          <CartSubtotalPrice products={products} />
         </>
       </Loading>
     </>
