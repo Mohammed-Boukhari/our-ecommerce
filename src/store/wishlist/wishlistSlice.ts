@@ -21,7 +21,12 @@ const initialState: IWishlist = {
 const wishlistSlice = createSlice({
   name: "wishlist",
   initialState,
-  reducers: {},
+  reducers: {
+    productsFullInfoCleanUp: (state) => {
+      state.productsFullInfo = [];
+    }
+  },
+
   extraReducers: (builder) => {
     builder.addCase(actLikeToggle.pending, (state) => {
       state.error;
@@ -41,15 +46,15 @@ const wishlistSlice = createSlice({
         state.error = action.payload;
       }
     });
-    // get wishlist items
+
+    // TODO:  get wishlist items
     builder.addCase(actGetWishlist.pending, (state) => {
       state.loading = "pending";
       state.error = null;
     });
     builder.addCase(actGetWishlist.fulfilled, (state, action) => {
       state.loading = "succeeded";
-
-      state.productsFullInfo = action.payload as TProduct[]; //+
+      state.productsFullInfo = action.payload as TProduct[];
     });
     builder.addCase(actGetWishlist.rejected, (state, action) => {
       state.loading = "failed";
@@ -60,4 +65,5 @@ const wishlistSlice = createSlice({
   },
 });
 export { actLikeToggle, actGetWishlist };
+export const { productsFullInfoCleanUp } = wishlistSlice.actions;
 export default wishlistSlice.reducer;

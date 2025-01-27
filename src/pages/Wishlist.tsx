@@ -4,7 +4,10 @@ import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { Product } from "@components/eCommerce";
 import { GridList, Heading } from "@components/common";
 import { TProduct } from "@customTypes/product";
-import { actGetWishlist } from "@store/wishlist/wishlistSlice";
+import {
+  actGetWishlist,
+  productsFullInfoCleanUp,
+} from "@store/wishlist/wishlistSlice";
 import { Loading } from "@components/feedback";
 
 const Wishlist = () => {
@@ -16,6 +19,9 @@ const Wishlist = () => {
 
   useEffect(() => {
     dispatch(actGetWishlist());
+    return () => {
+      dispatch(productsFullInfoCleanUp());
+    };
   }, [dispatch]);
 
   const records = productsFullInfo.map((el) => ({
