@@ -18,6 +18,7 @@ const Product = memo(
     const dispatch = useAppDispatch();
 
     const [isBTNDisabled, setIsBTNDisabled] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
     const currentRemainingQuantity = max - (quantity ?? 0);
     const quantityReachedToMax = currentRemainingQuantity <= 0 ? true : false;
@@ -40,13 +41,23 @@ const Product = memo(
       setIsBTNDisabled(true);
     };
     const LikeToggleHandler = () => {
-      dispatch(actLikeToggle(id));
+      setIsLoading(true);
+      dispatch(actLikeToggle(id))
+        .unwrap()
+        .then(() => setIsLoading(false))
+        .catch(() => setIsLoading(false));
     };
 
     return (
       <div className={product}>
         <div className={wishListBTN} onClick={LikeToggleHandler}>
-          {isLiked ? <LikeFill /> : <Like />}
+          {isLoading ? (
+            <Spinner animation="border" size="sm" variant="primary" />
+          ) : isLiked ? (
+            <LikeFill />
+          ) : (
+            <Like />
+          )}
         </div>
         <div className={productImg}>
           <img src={img} alt={title} />
