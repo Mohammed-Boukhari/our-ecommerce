@@ -64,6 +64,7 @@ const wishlistSlice = createSlice({
     });
   },
 });
+
 export { actLikeToggle, actGetWishlist };
 export const { clearWishlistProductsFullInfo } = wishlistSlice.actions;
 export default wishlistSlice.reducer;

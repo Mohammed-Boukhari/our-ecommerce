@@ -1,23 +1,24 @@
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
 import {
-    actGetCategories,
-    categoriesRecordsCleanUp,
+  actGetCategories,
+  categoriesRecordsCleanUp,
 } from "@store/categories/categoriesSlice";
 
 const UseCategories = () => {
-    const dispatch = useAppDispatch();
-    const { loading, error, records } = useAppSelector(
-        (state) => state.categories
-    );
+  const dispatch = useAppDispatch();
+  const { loading, error, records } = useAppSelector(
+    (state) => state.categories
+  );
 
-    useEffect(() => {
-        dispatch(actGetCategories());
-        return () => {
-            dispatch(categoriesRecordsCleanUp());
-        };
-    }, [dispatch]);
-    return { loading, error, records }
-}
+  useEffect(() => {
+    const promise = dispatch(actGetCategories());
+    return () => {
+      promise.abort();
+      dispatch(categoriesRecordsCleanUp());
+    };
+  }, [dispatch]);
+  return { loading, error, records };
+};
 
 export default UseCategories;
