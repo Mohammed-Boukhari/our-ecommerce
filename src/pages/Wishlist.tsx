@@ -1,35 +1,12 @@
-import { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "@store/hooks";
-
 import { Product } from "@components/eCommerce";
 import { GridList, Heading } from "@components/common";
 import { TProduct } from "@customTypes/product";
-import {
-  actGetWishlist,
-  clearWishlistProductsFullInfo,
-} from "@store/wishlist/wishlistSlice";
+
 import { Loading } from "@components/feedback";
+import useWishlist from "@hooks/useWishlist";
 
 const Wishlist = () => {
-  const dispatch = useAppDispatch();
-  const { loading, error, productsFullInfo } = useAppSelector(
-    (state) => state.wishlist
-  );
-  const cartItems = useAppSelector((state) => state.cart.items);
-
-  useEffect(() => {
-    dispatch(actGetWishlist());
-    return () => {
-      dispatch(clearWishlistProductsFullInfo());
-    };
-  }, [dispatch]);
-
-  const records = productsFullInfo.map((el) => ({
-    ...el,
-    quantity: cartItems[el.id],
-    isLiked: true,
-  }));
-
+  const { records, loading, error } = useWishlist();
   return (
     <>
       <Heading title={"Your Wishlist"} />
