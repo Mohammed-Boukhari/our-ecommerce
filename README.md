@@ -7,3 +7,4 @@ bootstrap
 react-bootstrap
 react-redux
 redux-persist
+npm i -D @type/node
