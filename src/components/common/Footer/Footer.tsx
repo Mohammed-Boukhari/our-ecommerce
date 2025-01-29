@@ -4,6 +4,6 @@ const { footerContainer } = style;
 
 export default function Footer() {
   return (
-    <div className={footerContainer}>© 2025 Our Ecom. All rights reserved</div>
+    <div className={footerContainer}>© 2025 Our eCom. All rights reserved</div>
   );
 }
