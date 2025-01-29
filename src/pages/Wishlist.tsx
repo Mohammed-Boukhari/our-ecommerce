@@ -6,7 +6,7 @@ import { GridList, Heading } from "@components/common";
 import { TProduct } from "@customTypes/product";
 import {
   actGetWishlist,
-  productsFullInfoCleanUp,
+  clearWishlistProductsFullInfo,
 } from "@store/wishlist/wishlistSlice";
 import { Loading } from "@components/feedback";
 
@@ -20,7 +20,7 @@ const Wishlist = () => {
   useEffect(() => {
     dispatch(actGetWishlist());
     return () => {
-      dispatch(productsFullInfoCleanUp());
+      dispatch(clearWishlistProductsFullInfo());
     };
   }, [dispatch]);
 

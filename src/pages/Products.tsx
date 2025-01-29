@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { useParams } from "react-router-dom";
 import {
   actGetProductsByCatPrefix,
-  productsCleanUp,
+  cleanUpProductsRecords,
 } from "@store/products/productsSlice";
 import { Loading } from "@components/feedback";
 
@@ -28,7 +28,7 @@ const Products = () => {
   useEffect(() => {
     dispatch(actGetProductsByCatPrefix(params.prefix as string));
     return () => {
-      dispatch(productsCleanUp());
+      dispatch(cleanUpProductsRecords());
     };
   }, [dispatch, params]);
 

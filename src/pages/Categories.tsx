@@ -1,5 +1,8 @@
 import { useAppDispatch, useAppSelector } from "@store/hooks";
-import { actGetCategories } from "@store/categories/categoriesSlice";
+import {
+  actGetCategories,
+  categoriesRecordsCleanUp,
+} from "@store/categories/categoriesSlice";
 
 import { GridList, Heading } from "@components/common";
 import { Category } from "@components/eCommerce";
@@ -14,10 +17,11 @@ const Categories = () => {
   );
 
   useEffect(() => {
-    if (records.length === 0) {
-      dispatch(actGetCategories());
-    }
-  }, [dispatch, records]);
+    dispatch(actGetCategories());
+    return () => {
+      dispatch(categoriesRecordsCleanUp());
+    };
+  }, [dispatch]);
 
   return (
     <>
