@@ -22,7 +22,6 @@ const CartItem = memo(
     changeQuantityHandler,
     removeItemHandler,
   }: TCartItemProps) => {
-    console.log("render");
     // TODO: render option List
     const renderOptions = Array(max)
       .fill(0)
