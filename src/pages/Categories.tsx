@@ -3,7 +3,7 @@ import { GridList, Heading } from "@components/common";
 import { Category } from "@components/eCommerce";
 
 import { Loading } from "@components/feedback";
-import { TCategory } from "@customTypes/category";
+import { TCategory } from "@types";
 
 const Categories = () => {
   const { records, loading, error } = useCategories();
