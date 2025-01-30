@@ -1,12 +1,15 @@
-import { TLoading } from "@customTypes/shared";
+import CategorySkeletons from "../skeletons/CategorySkeletons/CategorySkeletons";
+import { TLoading } from "@types";
+
 type TLoadingProps = {
   status: TLoading;
   error: null | string;
   children: React.ReactNode;
 };
+
 const Loading = ({ status, error, children }: TLoadingProps) => {
   if (status === "pending") {
-    return <p>loading please wait</p>;
+    return <CategorySkeletons />;
   }
 
   if (status === "failed") {
