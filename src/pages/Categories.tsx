@@ -11,7 +11,7 @@ const Categories = () => {
   return (
     <>
       <Heading title={"Categories"} />
-      <Loading status={loading} error={error}>
+      <Loading status={loading} error={error} type="category">
         <GridList<TCategory>
           records={records}
           renderItem={(record) => <Category {...record} />}

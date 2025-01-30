@@ -1,15 +1,27 @@
 import CategorySkeletons from "../skeletons/CategorySkeletons/CategorySkeletons";
+import CartSkeleton from "../skeletons/CartSkeleton/CartSkeleton";
+import ProductSkeleton from "../skeletons/ProductSkeleton/ProductSkeleton";
 import { TLoading } from "@types";
+
+const skeletonsTypes = {
+  cart: CartSkeleton,
+  product: ProductSkeleton,
+  category: CategorySkeletons,
+}
 
 type TLoadingProps = {
   status: TLoading;
   error: null | string;
   children: React.ReactNode;
+  type?: "cart" | "product" | "category";
 };
 
-const Loading = ({ status, error, children }: TLoadingProps) => {
+const Loading = ({ status, error, children, type = "category" }: TLoadingProps) => {
+
+  const Component = skeletonsTypes[type];
+  
   if (status === "pending") {
-    return <CategorySkeletons />;
+    return <Component />;
   }
 
   if (status === "failed") {

@@ -10,7 +10,7 @@ const Cart = () => {
   return (
     <>
       <Heading title={"Cart"} />
-      <Loading status={loading} error={error}>
+      <Loading status={loading} error={error} type="cart">
         <>
           {products.length === 0 ? (
             "Your cart is empty"
