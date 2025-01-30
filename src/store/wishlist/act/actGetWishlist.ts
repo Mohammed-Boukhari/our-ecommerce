@@ -12,7 +12,8 @@ const actGetWishlist = createAsyncThunk(
 
     try {
       const userWishlist = await axios.get<{ productId: number }[]>(
-        "/wishlist?userId=1", { signal }
+        "/wishlist?userId=1",
+        { signal }
       );
 
       if (!userWishlist.data.length) {

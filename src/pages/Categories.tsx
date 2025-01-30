@@ -15,6 +15,7 @@ const Categories = () => {
         <GridList<TCategory>
           records={records}
           renderItem={(record) => <Category {...record} />}
+          emptyMessage={"there ate no categories"}
         />
       </Loading>
     </>

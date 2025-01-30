@@ -17,12 +17,15 @@ type LottieHandlerProps = {
 };
 const LottieHandler = ({ type, message }: LottieHandlerProps) => {
   const animation = lottieFilesMap[type];
+  const messageStyle =
+    type === "error"
+      ? { fontSize: "19px", color: "red" }
+      : { fontSize: "19px", marginBlock: "30px" };
+
   return (
     <div className="d-flex flex-column align-items-center">
-      <Lottie animationData={animation} style={{ width: "500px" }} />
-      {message && (
-        <h3 style={{ marginTop: "300px", fontSize: "19px" }}>{message}</h3>
-      )}
+      <Lottie animationData={animation} style={{ width: "350px" }} />
+      {message && <h3 style={messageStyle}>{message}</h3>}
     </div>
   );
 };
