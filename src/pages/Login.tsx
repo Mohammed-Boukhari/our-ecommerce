@@ -19,6 +19,11 @@ const Login = () => {
   const submitForm: SubmitHandler<TLoginSchema> = (data) => {
     console.log(data);
   };
+
+  const emailOnblurHandler = (e: React.FocusEvent<HTMLInputElement>) => {
+    console.log(e);
+  };
+
   return (
     <>
       <Heading title={"User Login"} />
@@ -30,16 +35,8 @@ const Login = () => {
               name={"email"}
               register={register}
               error={errors.email?.message}
+              onBlur={emailOnblurHandler}
             />
-            {/* <Form.Group>
-              <Form.Label>Email address</Form.Label>
-              <Form.Control type="text" name="emailAddress" />
-            </Form.Group>
-
-            <Form.Group>
-              <Form.Label>Password</Form.Label>
-              <Form.Control type="password" name="password" />
-            </Form.Group> */}
             <Input
               label={"Password"}
               name={"password"}
