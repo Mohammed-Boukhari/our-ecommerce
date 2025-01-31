@@ -9,6 +9,8 @@ const Register = () => {
   const {
     register,
     handleSubmit,
+    getFieldState,
+    trigger,
     formState: { errors },
   } = useForm<TSignUpType>({
     mode: "onBlur",
@@ -17,6 +19,16 @@ const Register = () => {
 
   const submitForm: SubmitHandler<TSignUpType> = (data) => {
     console.log(data);
+  };
+
+  const emailOnblurHandler = async (e: React.FocusEvent<HTMLInputElement>) => {
+    await trigger("email");
+    const value = e.target.value;
+    const { isDirty, invalid } = getFieldState("email");
+    console.log(isDirty, invalid);
+    if (isDirty && !invalid) {
+      // checking
+    }
   };
 
   return (
@@ -42,6 +54,7 @@ const Register = () => {
               name={"email"}
               register={register}
               error={errors.email?.message}
+              onBlur={emailOnblurHandler}
             />
             <Input
               label={"Password"}
