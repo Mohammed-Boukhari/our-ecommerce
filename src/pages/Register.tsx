@@ -1,12 +1,19 @@
+import { useAppDispatch, useAppSelector } from "@store/hooks";
+import { actAuthRegister } from "@store/authentication/authenticationSlice";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Heading } from "@components/common";
-import { Button, Col, Form, Row } from "react-bootstrap";
+import { Button, Col, Form, Row, Spinner } from "react-bootstrap";
 import useCheckEmailAvailability from "@hooks/useCheckEmailAvailability";
 import { signUpSchema, TSignUpType } from "@validations/signUpSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "@components/Form";
 
 const Register = () => {
+  const dispatch = useAppDispatch();
+  const { error, loading } = useAppSelector(
+    (state) => state.authenticationSlice
+  );
+
   const {
     register,
     handleSubmit,
@@ -26,7 +33,8 @@ const Register = () => {
   } = useCheckEmailAvailability();
 
   const submitForm: SubmitHandler<TSignUpType> = (data) => {
-    console.log(data);
+    const { firstName, email, lastName, password } = data;
+    dispatch(actAuthRegister({ firstName, email, lastName, password }));
   };
 
   const emailOnblurHandler = async (e: React.FocusEvent<HTMLInputElement>) => {
@@ -105,10 +113,21 @@ const Register = () => {
               variant="info"
               type="submit"
               style={{ color: "white" }}
-              disabled={emailAvailabilityStatus === "checking" ? true : false}
+              disabled={
+                emailAvailabilityStatus === "checking"
+                  ? true
+                  : false || loading === "pending"
+              }
             >
-              Submit
+              {loading === "pending" ? (
+                <>
+                  <Spinner animation="border" size="sm"></Spinner> Loading...
+                </>
+              ) : (
+                "Submit"
+              )}
             </Button>
+            {error && <p className="text-danger mt-2">{error}</p>}
           </Form>
         </Col>
       </Row>
