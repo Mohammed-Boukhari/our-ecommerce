@@ -37,8 +37,10 @@ const Login = () => {
               error={errors.email?.message}
               onBlur={emailOnblurHandler}
             />
+
             <Input
               label={"Password"}
+              type="password"
               name={"password"}
               register={register}
               error={errors.password?.message}

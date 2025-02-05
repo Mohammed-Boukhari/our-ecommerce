@@ -95,6 +95,7 @@ const Register = () => {
             />
             <Input
               label={"Confirm Password"}
+              type="password"
               name={"confirmPassword"}
               register={register}
               error={errors.confirmPassword?.message}
