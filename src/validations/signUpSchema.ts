@@ -7,20 +7,20 @@ const signUpSchema = zod
     firstName: zod
       .string()
       .min(2, { message: "First name is required " })
-      .max(27),
+      .max(50),
     lastName: zod
       .string()
       .min(2, { message: "Last name is required " })
-      .max(27),
+      .max(50),
     email: zod
       .string()
       .min(2, { message: "Email address is required " })
-      .max(27)
+      .max(50)
       .email(),
     password: zod
       .string()
       .min(8, { message: "Password must be at least 8 characters longs" })
-      .max(27)
+      .max(50)
       .regex(regexp, {
         message: "Password should contain at lest 1 special character",
       }),

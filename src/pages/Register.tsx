@@ -19,9 +19,9 @@ const Register = () => {
   });
 
   const {
-    checkEmailAvailability,
     emailAvailabilityStatus,
     enteredEmail,
+    checkEmailAvailability,
     resetCheckEmailAvailability,
   } = useCheckEmailAvailability();
 
@@ -61,11 +61,30 @@ const Register = () => {
               error={errors.lastName?.message}
             />
             <Input
+              onBlur={emailOnblurHandler}
               label={"Email address"}
               name={"email"}
               register={register}
-              error={errors.email?.message}
-              onBlur={emailOnblurHandler}
+              error={
+                errors.email?.message
+                  ? errors.email?.message
+                  : emailAvailabilityStatus === "notAvailable"
+                  ? "This email is already in use."
+                  : emailAvailabilityStatus === "failed"
+                  ? "Error from the server."
+                  : ""
+              }
+              formText={
+                emailAvailabilityStatus === "checking"
+                  ? "We're currently checking the availability of this email address. Please wait a moment."
+                  : ""
+              }
+              success={
+                emailAvailabilityStatus === "available"
+                  ? "this email is  available for use."
+                  : ""
+              }
+              disabled={emailAvailabilityStatus === "checking" ? true : false}
             />
             <Input
               label={"Password"}
@@ -85,6 +104,7 @@ const Register = () => {
               variant="info"
               type="submit"
               style={{ color: "white" }}
+              disabled={emailAvailabilityStatus === "checking" ? true : false}
             >
               Submit
             </Button>
