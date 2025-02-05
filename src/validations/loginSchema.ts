@@ -6,7 +6,7 @@ const LoginSchema = zod.object({
   email: zod
     .string()
     .min(2, { message: "Email address is required " })
-    .max(27)
+    .max(40)
     .email(),
   password: zod
     .string()

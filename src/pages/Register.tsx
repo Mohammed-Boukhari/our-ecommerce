@@ -1,6 +1,7 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Heading } from "@components/common";
 import { Button, Col, Form, Row } from "react-bootstrap";
+import useCheckEmailAvailability from "@hooks/useCheckEmailAvailability";
 import { signUpSchema, TSignUpType } from "@validations/signUpSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "@components/Form";
@@ -17,6 +18,13 @@ const Register = () => {
     resolver: zodResolver(signUpSchema),
   });
 
+  const {
+    checkEmailAvailability,
+    emailAvailabilityStatus,
+    enteredEmail,
+    resetCheckEmailAvailability,
+  } = useCheckEmailAvailability();
+
   const submitForm: SubmitHandler<TSignUpType> = (data) => {
     console.log(data);
   };
@@ -26,8 +34,11 @@ const Register = () => {
     const value = e.target.value;
     const { isDirty, invalid } = getFieldState("email");
     console.log(isDirty, invalid);
-    if (isDirty && !invalid) {
-      // checking
+    if (isDirty && !invalid && enteredEmail !== value) {
+      checkEmailAvailability(value);
+    }
+    if (isDirty && invalid && enteredEmail) {
+      resetCheckEmailAvailability();
     }
   };
 
