@@ -1,6 +1,7 @@
 import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { actAuthRegister } from "@store/authentication/authenticationSlice";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import { Heading } from "@components/common";
 import { Button, Col, Form, Row, Spinner } from "react-bootstrap";
 import useCheckEmailAvailability from "@hooks/useCheckEmailAvailability";
@@ -10,6 +11,7 @@ import { Input } from "@components/Form";
 
 const Register = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const { error, loading } = useAppSelector(
     (state) => state.authenticationSlice
   );
@@ -32,9 +34,13 @@ const Register = () => {
     resetCheckEmailAvailability,
   } = useCheckEmailAvailability();
 
-  const submitForm: SubmitHandler<TSignUpType> = (data) => {
+  const submitForm: SubmitHandler<TSignUpType> = async (data) => {
     const { firstName, email, lastName, password } = data;
-    dispatch(actAuthRegister({ firstName, email, lastName, password }));
+    dispatch(actAuthRegister({ firstName, email, lastName, password }))
+      .unwrap()
+      .then(() => {
+        navigate("/login?message=account_created");
+      });
   };
 
   const emailOnblurHandler = async (e: React.FocusEvent<HTMLInputElement>) => {
