@@ -3,7 +3,6 @@ import actAuthRegister from "./act/actAuthRegister";
 import actAuthLogin from "./act/actAuthLogin";
 import { isString, TLoading } from "@types";
 
-
 interface IAuthState {
   user: {
     id: number;
@@ -27,7 +26,12 @@ const initialState: IAuthState = {
 const authenticationSlice = createSlice({
   name: "authentication",
   initialState,
-  reducers: {},
+  reducers: {
+    resetUI: (state) => {
+      state.loading = "idle";
+      state.error = null;
+    },
+  },
   extraReducers: (builder) => {
     //register
     builder.addCase(actAuthRegister.pending, (state) => {
@@ -63,4 +67,5 @@ const authenticationSlice = createSlice({
   },
 });
 export { actAuthRegister, actAuthLogin };
+export const { resetUI } = authenticationSlice.actions;
 export default authenticationSlice.reducer;

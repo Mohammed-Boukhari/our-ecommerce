@@ -1,5 +1,8 @@
 import { useAppDispatch, useAppSelector } from "@store/hooks";
-import { actAuthRegister } from "@store/authentication/authenticationSlice";
+import {
+  actAuthRegister,
+  resetUI,
+} from "@store/authentication/authenticationSlice";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { Heading } from "@components/common";
@@ -8,6 +11,7 @@ import useCheckEmailAvailability from "@hooks/useCheckEmailAvailability";
 import { signUpSchema, TSignUpType } from "@validations/signUpSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "@components/Form";
+import { useEffect } from "react";
 
 const Register = () => {
   const dispatch = useAppDispatch();
@@ -55,6 +59,12 @@ const Register = () => {
       resetCheckEmailAvailability();
     }
   };
+
+  useEffect(() => {
+    return () => {
+      dispatch(resetUI());
+    };
+  }, [dispatch]);
 
   return (
     <>

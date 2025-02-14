@@ -1,18 +1,33 @@
-import { useAppDispatch } from "@store/hooks";
-import { actAuthLogin } from "@store/authentication/authenticationSlice";
+import { useAppDispatch, useAppSelector } from "@store/hooks";
+import {
+  actAuthLogin,
+  resetUI,
+} from "@store/authentication/authenticationSlice";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Heading } from "@components/common";
 import { Input } from "@components/Form";
 import { LoginSchema, TLoginSchema } from "@validations/loginSchema";
-import { Button, Col, Form, Row, Alert } from "react-bootstrap";
+import { Button, Col, Form, Row, Alert, Spinner } from "react-bootstrap";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useEffect } from "react";
 
 const Login = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+
   const [searchParams, setSearchParams] = useSearchParams();
+
+  const { error, loading } = useAppSelector(
+    (state) => state.authenticationSlice
+  );
+
+  useEffect(() => {
+    return () => {
+      dispatch(resetUI());
+    };
+  }, [dispatch]);
 
   const {
     register,
@@ -24,6 +39,9 @@ const Login = () => {
   });
 
   const submitForm: SubmitHandler<TLoginSchema> = async (data) => {
+    if (searchParams.get("message") === "account_created") {
+      setSearchParams("");
+    }
     dispatch(actAuthLogin(data))
       .unwrap()
       .then(() => navigate("/"));
@@ -66,8 +84,15 @@ const Login = () => {
               type="submit"
               style={{ color: "white" }}
             >
-              Submit
+              {loading === "pending" ? (
+                <>
+                  <Spinner animation="border" size="sm"></Spinner> Loading...
+                </>
+              ) : (
+                "Submit"
+              )}
             </Button>
+            {error && <p className="text-danger mt-2">{error}</p>}
           </Form>
         </Col>
       </Row>
