@@ -1,4 +1,6 @@
-import { useSearchParams } from "react-router-dom";
+import { useAppDispatch } from "@store/hooks";
+import { actAuthLogin } from "@store/authentication/authenticationSlice";
+import { useSearchParams, useNavigate } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Heading } from "@components/common";
 import { Input } from "@components/Form";
@@ -8,6 +10,8 @@ import { Button, Col, Form, Row, Alert } from "react-bootstrap";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 const Login = () => {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
 
   const {
@@ -19,8 +23,10 @@ const Login = () => {
     resolver: zodResolver(LoginSchema),
   });
 
-  const submitForm: SubmitHandler<TLoginSchema> = (data) => {
-    console.log(data);
+  const submitForm: SubmitHandler<TLoginSchema> = async (data) => {
+    dispatch(actAuthLogin(data))
+      .unwrap()
+      .then(() => navigate("/"));
   };
 
   const emailOnblurHandler = (e: React.FocusEvent<HTMLInputElement>) => {
