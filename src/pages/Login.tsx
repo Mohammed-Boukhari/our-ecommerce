@@ -19,9 +19,7 @@ const Login = () => {
 
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const { error, loading } = useAppSelector(
-    (state) => state.authenticationSlice
-  );
+  const { error, loading } = useAppSelector((state) => state.auth);
 
   useEffect(() => {
     return () => {

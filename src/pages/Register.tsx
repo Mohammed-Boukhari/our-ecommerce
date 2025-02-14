@@ -16,9 +16,7 @@ import { useEffect } from "react";
 const Register = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const { error, loading } = useAppSelector(
-    (state) => state.authenticationSlice
-  );
+  const { error, loading } = useAppSelector((state) => state.auth);
 
   const {
     register,
