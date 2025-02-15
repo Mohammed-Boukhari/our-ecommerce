@@ -25,4 +25,7 @@ const itemQuantityAvailabilityCheckingSelector = createSelector(
   }
 );
 
-export { getCartTotalQuantitySelector, itemQuantityAvailabilityCheckingSelector };
+export {
+  getCartTotalQuantitySelector,
+  itemQuantityAvailabilityCheckingSelector,
+};

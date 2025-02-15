@@ -23,7 +23,7 @@ const wishlistSlice = createSlice({
   reducers: {
     clearWishlistProductsFullInfo: (state) => {
       state.productsFullInfo = [];
-    }
+    },
   },
 
   extraReducers: (builder) => {

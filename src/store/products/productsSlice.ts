@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import actGetProductsByCatPrefix from "./act/actGetProductsByCatPrefix";
-import { isString, TLoading,TProduct } from "@types";
+import { isString, TLoading, TProduct } from "@types";
 
 interface ICategoriesState {
   records: TProduct[];

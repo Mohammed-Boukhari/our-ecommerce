@@ -4,7 +4,7 @@ import { addToCart } from "@store/cart/cartSlice";
 import { actLikeToggle } from "@store/wishlist/wishlistSlice";
 
 import { Button, Spinner } from "react-bootstrap";
-import { TProduct } from "@customTypes/product";
+import { TProduct } from "@types"; 
 // FIXME: import svg element for product
 import Like from "@assets/svg/like.svg?react";
 import LikeFill from "@assets/svg/like-fill.svg?react";

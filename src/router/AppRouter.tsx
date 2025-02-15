@@ -24,7 +24,7 @@ const router = createBrowserRouter([
     element: (
       <Suspense
         fallback={
-          <div style={{marginTop: "7%"}}>
+          <div style={{ marginTop: "7%" }}>
             <LottieHandler type={"loading"} message="loading please wait..." />
           </div>
         }

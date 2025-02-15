@@ -12,4 +12,4 @@ React content loader || npm i react-content-loader
 lottieFiles && npm i lottie-react
 npm install react-hook-form 
 npm i zod
-npm install @hookform/resolvers 
+npm install @hookform/resolvers
