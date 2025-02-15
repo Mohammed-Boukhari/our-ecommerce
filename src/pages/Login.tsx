@@ -3,7 +3,7 @@ import {
   actAuthLogin,
   resetUI,
 } from "@store/authentication/authenticationSlice";
-import { useSearchParams, useNavigate } from "react-router-dom";
+import { useSearchParams, useNavigate, Navigate } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Heading } from "@components/common";
 import { Input } from "@components/Form";
@@ -19,7 +19,7 @@ const Login = () => {
 
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const { error, loading } = useAppSelector((state) => state.auth);
+  const { error, loading, accessToken } = useAppSelector((state) => state.auth);
 
   useEffect(() => {
     return () => {
@@ -37,7 +37,7 @@ const Login = () => {
   });
 
   const submitForm: SubmitHandler<TLoginSchema> = async (data) => {
-    if (searchParams.get("message") === "account_created") {
+    if (searchParams.get("message")) {
       setSearchParams("");
     }
     dispatch(actAuthLogin(data))
@@ -49,11 +49,20 @@ const Login = () => {
     console.log(e);
   };
 
+  if (accessToken) {
+    return <Navigate to="/" />;
+  }
+
   return (
     <>
       <Heading title={"User Login"} />
       <Row>
         <Col md={{ span: 6, offset: 3 }}>
+          {searchParams.get("message") === "login_required" && (
+            <Alert variant="success">
+              You need to login to view this content
+            </Alert>
+          )}
           {searchParams.get("message") === "account_created" && (
             <Alert variant="success">
               Your account successfully created, please login

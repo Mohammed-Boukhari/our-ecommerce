@@ -4,7 +4,7 @@ import {
   resetUI,
 } from "@store/authentication/authenticationSlice";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { Heading } from "@components/common";
 import { Button, Col, Form, Row, Spinner } from "react-bootstrap";
 import useCheckEmailAvailability from "@hooks/useCheckEmailAvailability";
@@ -16,7 +16,7 @@ import { useEffect } from "react";
 const Register = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const { error, loading } = useAppSelector((state) => state.auth);
+  const { error, loading, accessToken } = useAppSelector((state) => state.auth);
 
   const {
     register,
@@ -63,6 +63,10 @@ const Register = () => {
       dispatch(resetUI());
     };
   }, [dispatch]);
+
+  if (accessToken) {
+    return <Navigate to="/" />;
+  }
 
   return (
     <>

@@ -15,8 +15,11 @@ const Login = lazy(() => import("@pages/Login"));
 const Register = lazy(() => import("@pages/Register"));
 const Cart = lazy(() => import("@pages/Cart"));
 const Wishlist = lazy(() => import("@pages/Wishlist"));
+const Profile = lazy(() => import("@pages/Profile"));
 
 import Error from "@pages/Error";
+// protect routes
+import ProtectedRoute from "@components/Auth/ProtectedRoute";
 
 const router = createBrowserRouter([
   {
@@ -95,6 +98,16 @@ const router = createBrowserRouter([
         ),
       },
       {
+        path: "profile",
+        element: (
+          <ProtectedRoute>
+            <PageSuspenseFallback>
+              <Profile />
+            </PageSuspenseFallback>
+          </ProtectedRoute>
+        ),
+      },
+      {
         path: "cart",
         element: (
           <PageSuspenseFallback>
@@ -105,9 +118,11 @@ const router = createBrowserRouter([
       {
         path: "wishlist",
         element: (
-          <PageSuspenseFallback>
-            <Wishlist />
-          </PageSuspenseFallback>
+          <ProtectedRoute>
+            <PageSuspenseFallback>
+              <Wishlist />
+            </PageSuspenseFallback>
+          </ProtectedRoute>
         ),
       },
     ],

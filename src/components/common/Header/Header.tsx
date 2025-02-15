@@ -56,7 +56,7 @@ const Header = () => {
                   title={"welcome: " + user?.firstName}
                   id="basic-nav-dropdown"
                 >
-                  <NavDropdown.Item href="#action/3.1">
+                  <NavDropdown.Item as={NavLink} to="/profile">
                     Profile
                   </NavDropdown.Item>
                   <NavDropdown.Item href="#action/3.2">Orders</NavDropdown.Item>
