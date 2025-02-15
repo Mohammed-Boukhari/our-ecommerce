@@ -1,17 +1,27 @@
+import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
-import { NavLink } from "react-router-dom";
+import { authLogout } from "@store/authentication/authenticationSlice";
 
+import HeaderLeftBar from "./HeaderLeftBar/HeaderLeftBar";
+
+import { NavLink } from "react-router-dom";
 import { Badge, Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 
 import styles from "./style.module.css";
-import HeaderLeftBar from "./HeaderLeftBar/HeaderLeftBar";
-import { authLogout } from "@store/authentication/authenticationSlice";
+import { actGetWishlist } from "@store/wishlist/wishlistSlice";
 
 const { headerContainer, headerLogo } = styles;
 
 const Header = () => {
   const dispatch = useAppDispatch();
   const { accessToken, user } = useAppSelector((state) => state.auth);
+
+  useEffect(() => {
+    if (accessToken) {
+      dispatch(actGetWishlist("ProductIds"));
+    }
+  }, [dispatch, accessToken]);
+
   return (
     <header>
       <div className={headerContainer}>
