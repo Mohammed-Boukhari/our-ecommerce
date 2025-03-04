@@ -56,7 +56,7 @@ const wishlistSlice = createSlice({
       state.loading = "succeeded";
       if (action.payload.dataType === "ProductFullInfo") {
         state.productsFullInfo = action.payload.data as TProduct[];
-      } else {
+      } else if (action.payload.dataType === "ProductIds") {
         state.itemsId = action.payload.data as number[];
       }
     });
