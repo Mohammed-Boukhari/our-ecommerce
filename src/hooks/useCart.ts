@@ -7,11 +7,14 @@ import {
 } from "@store/cart/cartSlice";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
 
-const UseCart = () => {
+const useCart = () => {
   const dispatch = useAppDispatch();
+
   const { items, productFullInfo, loading, error } = useAppSelector(
     (state) => state.cart
   );
+
+  const userAccessToken = useAppSelector((state) => state.auth.accessToken);
 
   useEffect(() => {
     const promise = dispatch(actGetProductsByItems());
@@ -40,7 +43,14 @@ const UseCart = () => {
     [dispatch]
   );
 
-  return { products, changeQuantityHandler, removeItemHandler, loading, error };
+  return {
+    products,
+    loading,
+    error,
+    userAccessToken,
+    changeQuantityHandler,
+    removeItemHandler,
+  };
 };
 
-export default UseCart;
+export default useCart;

@@ -1,8 +1,15 @@
+import { Button } from "react-bootstrap";
 import { TProduct } from "@types";
+type TCartSubtotalProps = {
+  products: TProduct[];
+  userAccessToken: string | null;
+};
 import styles from "./style.module.css";
-type TCartSubtotalProps = { products: TProduct[] };
 
-const CartSubtotalPrice = ({ products }: TCartSubtotalProps) => {
+const CartSubtotalPrice = ({
+  products,
+  userAccessToken,
+}: TCartSubtotalProps) => {
   const subtotalPrice = products.reduce((accumulator, el) => {
     const price = el.price;
     const quantity = el.quantity;
@@ -15,10 +22,22 @@ const CartSubtotalPrice = ({ products }: TCartSubtotalProps) => {
   }, 0);
 
   return (
-    <div className={styles.container}>
-      <span>Subtotal:</span>
-      <span>{subtotalPrice.toFixed(2)} EGP</span>
-    </div>
+    <>
+      <div className={styles.container}>
+        <span>Subtotal:</span>
+        <span>{subtotalPrice.toFixed(2)} EGP</span>
+      </div>
+      {userAccessToken && (
+        <div className={styles.container}>
+          <span></span>
+          <span>
+            <Button variant="info" style={{ color: "white" }}>
+              Place Order
+            </Button>
+          </span>
+        </div>
+      )}
+    </>
   );
 };
 
