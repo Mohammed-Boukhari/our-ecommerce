@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { TLoading, TOrdersItem } from "@types";
+import actPlaceOrder from "./act/actPlaceOrder";
+
+import { isString, TLoading, TOrdersItem } from "@types";
 
 interface IOrderSlice {
   orderList: TOrdersItem[];
@@ -17,6 +19,22 @@ const ordersSlice = createSlice({
   name: "orders",
   initialState,
   reducers: {},
+  extraReducers: (builder) => {
+    // TODO: Place order
+    builder.addCase(actPlaceOrder.pending, (state) => {
+      state.loading = "pending";
+      state.error = null;
+    });
+    builder.addCase(actPlaceOrder.fulfilled, (state) => {
+      state.loading = "succeeded";
+    });
+    builder.addCase(actPlaceOrder.rejected, (state, action) => {
+      state.loading = "failed";
+      if (isString(action.payload)) {
+        state.error = action.payload;
+      }
+    });
+  },
 });
-
+export { actPlaceOrder };
 export default ordersSlice.reducer;
