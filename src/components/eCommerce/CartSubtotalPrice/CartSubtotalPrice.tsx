@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useAppDispatch } from "@store/hooks";
 import { actPlaceOrder } from "@store/orders/ordersSlice";
 
-import { Button, Modal } from "react-bootstrap";
+import { Button, Modal, Spinner } from "react-bootstrap";
 
 import { TProduct } from "@types";
 type TCartSubtotalProps = {
@@ -10,12 +10,16 @@ type TCartSubtotalProps = {
   userAccessToken: string | null;
 };
 import styles from "./style.module.css";
+import { clearCartAfterPlaceOrder } from "@store/cart/cartSlice";
 
 const CartSubtotalPrice = ({
   products,
   userAccessToken,
 }: TCartSubtotalProps) => {
   const dispatch = useAppDispatch();
+
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const [showModal, setShowModal] = useState(false);
 
@@ -31,10 +35,19 @@ const CartSubtotalPrice = ({
   }, 0);
   const modalHandler = () => {
     setShowModal(!showModal);
+    setError(null);
   };
 
   const placeOrderHandler = () => {
-    dispatch(actPlaceOrder(subtotalPrice));
+    setLoading(true);
+    dispatch(actPlaceOrder(subtotalPrice))
+      .unwrap()
+      .then(() => {
+        dispatch(clearCartAfterPlaceOrder());
+        setShowModal(true);
+      })
+      .catch((error) => setError(error))
+      .finally(() => setLoading(false));
   };
 
   return (
@@ -46,6 +59,9 @@ const CartSubtotalPrice = ({
         <Modal.Body>
           Are you sure you want to place order with Subtotal:
           {` ${subtotalPrice.toFixed(2)} EGP`}
+          {!loading && error && (
+            <p style={{ color: "#DC3545", marginTop: "10px" }}>{error}</p>
+          )}
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={() => modalHandler()}>
@@ -56,10 +72,17 @@ const CartSubtotalPrice = ({
             style={{ color: "wheat" }}
             onClick={() => placeOrderHandler()}
           >
-            Confirm
+            {loading ? (
+              <>
+                <Spinner animation="border" size="sm" /> Loading
+              </>
+            ) : (
+              "Confirm"
+            )}
           </Button>
         </Modal.Footer>
       </Modal>
+
       <div className={styles.container}>
         <span>Subtotal:</span>
         <span>{subtotalPrice.toFixed(2)} EGP</span>
