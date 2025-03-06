@@ -9,6 +9,7 @@ const Cart = () => {
     loading,
     error,
     userAccessToken,
+    placeOrderStatus,
     changeQuantityHandler,
     removeItemHandler,
   } = useCart();
@@ -18,9 +19,7 @@ const Cart = () => {
       <Heading title={"Cart"} />
       <Loading status={loading} error={error} type="cart">
         <>
-          {products.length === 0 ? (
-            <LottieHandler type={"empty"} message="Your cart is empty" />
-          ) : (
+          {products.length ? (
             <>
               <CartItemList
                 products={products}
@@ -32,6 +31,13 @@ const Cart = () => {
                 userAccessToken={userAccessToken}
               />
             </>
+          ) : placeOrderStatus === "succeeded" ? (
+            <LottieHandler
+              type={"success"}
+              message="Your order has been placed successfully"
+            />
+          ) : (
+            <LottieHandler type={"empty"} message="Your cart is empty" />
           )}
         </>
       </Loading>

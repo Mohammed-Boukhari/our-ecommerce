@@ -1,4 +1,4 @@
-import { TProduct } from "@types"; 
+import { TProduct } from "@types";
 import CartItem from "../CartItem/CartItem";
 
 type TCartItemListProps = {
