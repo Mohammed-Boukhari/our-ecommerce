@@ -1,22 +1,40 @@
-import { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "@store/hooks";
-import { actGetOrders } from "@store/orders/ordersSlice";
 import { Heading } from "@components/common";
-import { Table } from "react-bootstrap";
+import { Modal, Table } from "react-bootstrap";
 import { Loading } from "@components/feedback";
+import { ProductInfo } from "@components/eCommerce";
+import uesOrders from "@hooks/uesOrders";
 
 const Orders = () => {
-  const dispatch = useAppDispatch();
-
-  const { error, loading, orderList } = useAppSelector((state) => state.orders);
-
-  useEffect(() => {
-    const promise = dispatch(actGetOrders());
-    return () => promise.abort();
-  }, [dispatch]);
+  const {
+    error,
+    loading,
+    orderList,
+    showModal,
+    selectedProduct,
+    viewDetailsHandler,
+    closeModalHandler,
+  } = uesOrders();
 
   return (
     <>
+      <Modal show={showModal} onHide={() => closeModalHandler()}>
+        <Modal.Header closeButton>
+          <Modal.Title>Products Details</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          {selectedProduct.map((el) => (
+            <ProductInfo
+              key={el.id}
+              title={el.title}
+              img={el.img}
+              price={el.price}
+              quantity={el.quantity}
+              direction="column"
+              style={{ marginBottom: "10px" }}
+            />
+          ))}
+        </Modal.Body>
+      </Modal>
       <Heading title="My Order" />
       <Loading status={loading} error={error} type="category">
         <Table striped bordered hover>
@@ -34,6 +52,7 @@ const Orders = () => {
                 <td>
                   {`${el.items.length} item(s) / `}{" "}
                   <span
+                    onClick={() => viewDetailsHandler(el.id)}
                     style={{ textDecoration: "underline", cursor: "pointer" }}
                   >
                     Product Details
