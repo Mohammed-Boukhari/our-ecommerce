@@ -1,20 +1,23 @@
 import CategorySkeletons from "../skeletons/CategorySkeletons/CategorySkeletons";
 import CartSkeleton from "../skeletons/CartSkeleton/CartSkeleton";
 import ProductSkeleton from "../skeletons/ProductSkeleton/ProductSkeleton";
-import { TLoading } from "@types";
 import LottieHandler from "../LottieHandler/LottieHandler";
 
-const skeletonsTypes = {
-  cart: CartSkeleton,
-  product: ProductSkeleton,
-  category: CategorySkeletons,
-};
+/* type */ import { TLoading } from "@types";
+import TableSkeleton from "../skeletons/TableSkeleton/TableSkeleton";
 
 type TLoadingProps = {
   status: TLoading;
   error: null | string;
   children: React.ReactNode;
-  type?: "cart" | "product" | "category";
+  type?: "cart" | "product" | "category" | "table";
+};
+
+const skeletonsTypes = {
+  cart: CartSkeleton,
+  product: ProductSkeleton,
+  category: CategorySkeletons,
+  table: TableSkeleton,
 };
 
 const Loading = ({
