@@ -1,11 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-
-export type TToast = {
-  id?: string;
-  type: "primary" | "success" | "warning" | "danger";
-  title?: string | null;
-  message: string;
-};
+import { TToast } from "@types";
 
 interface IToastsSlice {
   records: TToast[];
@@ -22,7 +16,7 @@ const initialState: IToastsSlice = {
     {
       id: "2",
       type: "danger",
-      message: "item added to your cart",
+      message: "Error From The Server!",
     },
     {
       id: "3",
@@ -31,7 +25,7 @@ const initialState: IToastsSlice = {
     },
     {
       id: "4",
-      type: "primary",
+      type: "info",
       message: "lorem ipsum dollar",
     },
   ],

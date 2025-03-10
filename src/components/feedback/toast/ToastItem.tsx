@@ -1,12 +1,12 @@
-import { TToast } from "@store/toasts/toastsSlice";
 import styles from "./styles.module.css";
+import { TToast } from "@types";
 
 const { toastItem } = styles;
 type TTostItemProps = TToast;
-const ToastItem = ({ message, type, title }: TTostItemProps) => {
+const ToastItem = ({ message, type, title,id }: TTostItemProps) => {
   return (
     <div className={`alert alert-${type} ${toastItem}`}>
-      <h5>{title}</h5>
+      <h5>{title ? title : type}</h5>
       <p>{message}</p>
       <button className="btn-close"></button>
       <span className=" placeholder" style={{ width: "100%" }}></span>
