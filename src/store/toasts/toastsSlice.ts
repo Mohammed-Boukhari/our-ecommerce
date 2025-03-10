@@ -41,17 +41,26 @@ const toastsSlice = createSlice({
         title: action.payload.title || action.payload.type,
         type: action.payload.type,
         message: action.payload.message,
+        delayAppearance: action.payload.delayAppearance || false,
       });
     },
-
     removeToast: (state, action) => {
       console.log("id " + action.payload);
       state.records = state.records.filter(
         (record) => record.id !== action.payload
       );
     },
+    stopDelayAppearance: (state, action) => {
+      state.records.map((el) => {
+        if (el.id === action.payload) {
+          return (el.delayAppearance = false);
+        }
+        return el;
+      });
+    },
   },
 });
 
-export const { removeToast, addToast } = toastsSlice.actions;
+export const { removeToast, addToast, stopDelayAppearance } =
+  toastsSlice.actions;
 export default toastsSlice.reducer;

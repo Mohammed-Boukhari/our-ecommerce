@@ -17,6 +17,7 @@ const ToastList = () => {
             title={el.title}
             message={el.message}
             type={el.type}
+            delayAppearance={el.delayAppearance}
           />
         );
       })}

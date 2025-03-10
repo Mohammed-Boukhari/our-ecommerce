@@ -59,6 +59,15 @@ const Product = memo(
           message: ` item ${title} added to cart`,
         })
       );
+
+      currentRemainingQuantity - 1 == 0 &&
+        dispatch(
+          addToast({
+            type: "warning",
+            message: ` you reached to max from item: ${title} and`,
+            delayAppearance: true,
+          })
+        );
       setIsBTNDisabled(true);
     };
 

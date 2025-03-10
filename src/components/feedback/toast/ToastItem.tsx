@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { useAppDispatch } from "@store/hooks";
-import { removeToast } from "@store/toasts/toastsSlice";
+import { removeToast, stopDelayAppearance } from "@store/toasts/toastsSlice";
 
 import styles from "./styles.module.css";
 import { TToast } from "@types";
@@ -8,7 +8,13 @@ import { TToast } from "@types";
 const { toastItem } = styles;
 type TTostItemProps = TToast;
 
-const ToastItem = ({ message, type, title, id }: TTostItemProps) => {
+const ToastItem = ({
+  message,
+  type,
+  title,
+  id,
+  delayAppearance,
+}: TTostItemProps) => {
   const dispatch = useAppDispatch();
   const [progressBarINdicator, setProgressBarINdicator] = useState(0);
 
@@ -22,6 +28,8 @@ const ToastItem = ({ message, type, title, id }: TTostItemProps) => {
 
   // TODO: progress bar calculate
   useEffect(() => {
+    if (delayAppearance) return;
+
     const timerId = setInterval(() => {
       setProgressBarINdicator((prevState) => {
         if (prevState < progressBarScale) {
@@ -32,7 +40,7 @@ const ToastItem = ({ message, type, title, id }: TTostItemProps) => {
 
       return () => clearInterval(timerId);
     }, intervalTime);
-  }, [intervalTime]);
+  }, [intervalTime, delayAppearance]);
 
   // TODO: close toast when progress bar 100%
   useEffect(() => {
@@ -40,6 +48,19 @@ const ToastItem = ({ message, type, title, id }: TTostItemProps) => {
       closeToastHandler();
     }
   }, [progressBarINdicator, closeToastHandler]);
+
+  // TODO: delay appearance handler
+  useEffect(() => {
+    if (delayAppearance) {
+      const timerId = setTimeout(() => {
+        dispatch(stopDelayAppearance(id));
+      }, 2000);
+      return () => clearTimeout(timerId);
+    }
+  }, [delayAppearance, dispatch, id]);
+
+  // TODO: if delay with true return nothing
+  if (delayAppearance) return "";
 
   return (
     <div className={`alert alert-${type} ${toastItem}`}>
