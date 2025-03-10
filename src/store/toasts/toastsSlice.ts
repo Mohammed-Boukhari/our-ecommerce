@@ -34,7 +34,15 @@ const initialState: IToastsSlice = {
 const toastsSlice = createSlice({
   name: "toasts",
   initialState,
-  reducers: {},
+  reducers: {
+    removeToast: (state, action) => {
+      console.log("id " + action.payload);
+      state.records = state.records.filter(
+        (record) => record.id !== action.payload
+      );
+    },
+  },
 });
 
+export const { removeToast } = toastsSlice.actions;
 export default toastsSlice.reducer;

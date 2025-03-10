@@ -11,7 +11,13 @@ const ToastList = () => {
     <div className={toastList}>
       {records.map((el) => {
         return (
-          <ToastItem key={el.id} title={el.title} message={el.message} type={el.type} />
+          <ToastItem
+            key={el.id}
+            id={el.id}
+            title={el.title}
+            message={el.message}
+            type={el.type}
+          />
         );
       })}
     </div>
