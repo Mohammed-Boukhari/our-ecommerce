@@ -24,7 +24,6 @@ const toastsSlice = createSlice({
       });
     },
     removeToast: (state, action) => {
-      console.log("id " + action.payload);
       state.records = state.records.filter(
         (record) => record.id !== action.payload
       );

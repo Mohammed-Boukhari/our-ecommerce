@@ -16,6 +16,10 @@ const Cart = () => {
 
   return (
     <>
+      <head>
+        <title>our eCommerce | Cart</title>
+      </head>
+
       <Heading title={"Cart"} />
       <Loading status={loading} error={error} type="cart">
         <>

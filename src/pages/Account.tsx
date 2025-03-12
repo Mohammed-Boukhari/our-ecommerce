@@ -6,6 +6,10 @@ const Account = () => {
 
   return (
     <>
+      <head>
+        <title>our eCommerce | Account</title>
+      </head>
+
       <Heading title="Account Info" />
       <ul>
         <li>First Name: {accountInfo?.firstName}</li>

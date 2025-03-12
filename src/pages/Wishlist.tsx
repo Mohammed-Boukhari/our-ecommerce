@@ -9,6 +9,9 @@ const Wishlist = () => {
   const { records, loading, error } = useWishlist();
   return (
     <>
+      <head>
+        <title>our eCommerce | Wishlist</title>
+      </head>
       <Heading title={"Your Wishlist"} />
       <Loading status={loading} error={error}>
         <GridList<TProduct>

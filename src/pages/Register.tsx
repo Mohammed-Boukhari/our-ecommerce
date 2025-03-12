@@ -23,6 +23,10 @@ const Register = () => {
 
   return (
     <>
+      <head>
+        <title>our eCommerce | Register</title>
+      </head>
+
       <Heading title={"User Registration"} />
       <Row>
         <Col md={{ span: 6, offset: 3 }}>

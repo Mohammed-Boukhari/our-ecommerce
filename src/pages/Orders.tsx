@@ -17,6 +17,10 @@ const Orders = () => {
 
   return (
     <>
+      <head>
+        <title>our eCommerce | Orders</title>
+      </head>
+      <Heading title="My Order" />
       <Modal show={showModal} onHide={() => closeModalHandler()}>
         <Modal.Header closeButton>
           <Modal.Title>Products Details</Modal.Title>
@@ -35,7 +39,7 @@ const Orders = () => {
           ))}
         </Modal.Body>
       </Modal>
-      <Heading title="My Order" />
+
       <Loading status={loading} error={error} type="table">
         <Table striped bordered hover>
           <thead>

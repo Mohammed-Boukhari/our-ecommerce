@@ -1,11 +1,8 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { NavigateFunction, useNavigate } from "react-router-dom";
 
-// import { useAppSelector } from "@store/hooks";
-// import { getCartTotalQuantitySelector } from "@store/cart/cartSlice";
-
-// import Logo from "@assets/svg/cart.svg?react";
 import style from "./style.module.css";
+const { container, titleNum, pumpCartQuantity, iconWrapper } = style;
 
 type THeaderCounterProps = {
   totalQuantity: number;
@@ -14,19 +11,18 @@ type THeaderCounterProps = {
   title: string;
 };
 
-const { container, titleNum, pumpCartQuantity, iconWrapper } = style;
-
 const HeaderCounter = ({
   totalQuantity,
   svgIcon,
   to,
   title,
 }: THeaderCounterProps) => {
-  const navigate = useNavigate();
+  const navigate: NavigateFunction = useNavigate();
   // FIXME: ANIMATION To Cart Quantity and Quantity
-  const [isAnimate, setIsAnimate] = useState(false);
-  // const totalQuantity = useAppSelector(getCartTotalQuantitySelector);
-  const quantityStyle = `${titleNum} ${isAnimate ? pumpCartQuantity : ""}`;
+  const [isAnimate, setIsAnimate] = useState<boolean>(false);
+  const quantityStyle: string = `${titleNum} ${
+    isAnimate ? pumpCartQuantity : ""
+  }`;
 
   useEffect(() => {
     if (!totalQuantity) {
@@ -34,7 +30,7 @@ const HeaderCounter = ({
     }
     setIsAnimate(true);
 
-    const debounce = setTimeout(() => {
+    const debounce:number = setTimeout(() => {
       setIsAnimate(false);
     }, 300);
 
@@ -43,14 +39,25 @@ const HeaderCounter = ({
   // End ANIMATION ===//
 
   return (
+    // container Header counter
     <div className={container} onClick={() => navigate(to)}>
+      {/* Icon Wrapper */}
       <div className={iconWrapper}>
+        {/* svg Icon Components */}
         {svgIcon}
+        {/* svg Icon Components */}
+
+        {/* Total Quantity */}
         {totalQuantity > 0 && (
           <div className={quantityStyle}>{totalQuantity}</div>
         )}
+        {/*=== Total Quantity ===*/}
       </div>
+      {/*=== Icon Wrapper ===*/}
+
+      {/* title Header counter */}
       <h3>{title}</h3>
+      {/*=== title Header counter ===*/}
     </div>
   );
 };

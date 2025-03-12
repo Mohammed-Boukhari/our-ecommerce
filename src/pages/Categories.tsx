@@ -10,6 +10,10 @@ const Categories = () => {
 
   return (
     <>
+      <head>
+        <title>our eCommerce | Categories</title>
+      </head>
+
       <Heading title={"Categories"} />
       <Loading status={loading} error={error} type="category">
         <GridList<TCategory>

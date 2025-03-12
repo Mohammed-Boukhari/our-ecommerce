@@ -11,6 +11,10 @@ const Products = () => {
 
   return (
     <>
+      <head>
+        <title>our eCommerce | Products</title>
+      </head>
+
       <Heading title={`${paramsPrefix?.toUpperCase()} Products`} />
       <Loading status={loading} error={error} type="product">
         <GridList<TProduct>

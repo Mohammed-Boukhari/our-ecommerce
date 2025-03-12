@@ -27,7 +27,7 @@ const ToastItem = ({
 
   const closeToastHandler = useCallback(() => {
     dispatch(removeToast(id));
-    onCloseToast?.()
+    onCloseToast?.();
   }, [dispatch, id]);
 
   const pauseProgressBarIndicatorHandler = () => {
@@ -42,8 +42,7 @@ const ToastItem = ({
       setProgressBarINdicator((prevState) => {
         if (!pauseProgressBarIndicator) {
           if (prevState < progressBarScale) {
-            console.log(prevState);
-            return prevState + 0.5;
+            return prevState + 1;
           }
         }
         return prevState;

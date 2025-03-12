@@ -23,6 +23,10 @@ const Login = () => {
 
   return (
     <>
+      <head>
+        <title>our eCommerce | Login</title>
+      </head>
+
       <Heading title={"User Login"} />
       <Row>
         <Col md={{ span: 6, offset: 3 }}>
