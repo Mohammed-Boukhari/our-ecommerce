@@ -6,29 +6,7 @@ interface IToastsSlice {
 }
 
 const initialState: IToastsSlice = {
-  records: [
-    // {
-    //   id: "1",
-    //   type: "success",
-    //   message: "item added to your cart",
-    //   title: "add to cart",
-    // },
-    // {
-    //   id: "2",
-    //   type: "danger",
-    //   message: "Error From The Server!",
-    // },
-    // {
-    //   id: "3",
-    //   type: "warning",
-    //   message: "your session will expiry soon",
-    // },
-    // {
-    //   id: "4",
-    //   type: "info",
-    //   message: "lorem ipsum dollar",
-    // },
-  ],
+  records: [],
 };
 
 const toastsSlice = createSlice({
@@ -42,6 +20,7 @@ const toastsSlice = createSlice({
         type: action.payload.type,
         message: action.payload.message,
         delayAppearance: action.payload.delayAppearance || false,
+        onCloseToast: action.payload.onCloseToast,
       });
     },
     removeToast: (state, action) => {

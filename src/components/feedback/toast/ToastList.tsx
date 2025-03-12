@@ -27,6 +27,7 @@ const ToastList = () => {
                 message={el.message}
                 type={el.type}
                 delayAppearance={el.delayAppearance}
+                onCloseToast={el.onCloseToast}
               />
             </motion.div>
           );

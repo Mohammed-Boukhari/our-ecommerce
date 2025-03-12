@@ -14,6 +14,7 @@ const ToastItem = ({
   title,
   id,
   delayAppearance,
+  onCloseToast,
 }: TTostItemProps) => {
   const dispatch = useAppDispatch();
   const [progressBarINdicator, setProgressBarINdicator] = useState(0);
@@ -26,6 +27,7 @@ const ToastItem = ({
 
   const closeToastHandler = useCallback(() => {
     dispatch(removeToast(id));
+    onCloseToast?.()
   }, [dispatch, id]);
 
   const pauseProgressBarIndicatorHandler = () => {
@@ -47,7 +49,7 @@ const ToastItem = ({
         return prevState;
       });
     }, intervalTime);
-    
+
     return () => clearInterval(timerId);
   }, [intervalTime, delayAppearance, pauseProgressBarIndicator]);
 

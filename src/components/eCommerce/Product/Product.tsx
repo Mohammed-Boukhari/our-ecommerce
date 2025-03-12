@@ -57,6 +57,9 @@ const Product = memo(
           title: "Add to Cart",
           type: "success",
           message: ` item ${title} added to cart`,
+          onCloseToast: () => {
+            console.log("fire");
+          },
         })
       );
 

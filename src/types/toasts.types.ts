@@ -4,4 +4,5 @@ export type TToast = {
   title?: string | null;
   message: string;
   delayAppearance?: boolean;
+  onCloseToast?: () => void;
 };
