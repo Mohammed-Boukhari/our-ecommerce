@@ -17,6 +17,8 @@ const ToastItem = ({
 }: TTostItemProps) => {
   const dispatch = useAppDispatch();
   const [progressBarINdicator, setProgressBarINdicator] = useState(0);
+  const [pauseProgressBarIndicator, setPauseProgressBarIndicator] =
+    useState(false);
 
   const progressBarScale = 100;
   const duration = 4000;
@@ -26,21 +28,28 @@ const ToastItem = ({
     dispatch(removeToast(id));
   }, [dispatch, id]);
 
+  const pauseProgressBarIndicatorHandler = () => {
+    setPauseProgressBarIndicator((prevState) => !prevState);
+  };
+
   // TODO: progress bar calculate
   useEffect(() => {
     if (delayAppearance) return;
 
     const timerId = setInterval(() => {
       setProgressBarINdicator((prevState) => {
-        if (prevState < progressBarScale) {
-          return prevState + 1;
+        if (!pauseProgressBarIndicator) {
+          if (prevState < progressBarScale) {
+            console.log(prevState);
+            return prevState + 0.5;
+          }
         }
         return prevState;
       });
-
-      return () => clearInterval(timerId);
     }, intervalTime);
-  }, [intervalTime, delayAppearance]);
+    
+    return () => clearInterval(timerId);
+  }, [intervalTime, delayAppearance, pauseProgressBarIndicator]);
 
   // TODO: close toast when progress bar 100%
   useEffect(() => {
@@ -63,7 +72,11 @@ const ToastItem = ({
   if (delayAppearance) return "";
 
   return (
-    <div className={`alert alert-${type} ${toastItem}`}>
+    <div
+      className={`alert alert-${type} ${toastItem}`}
+      onMouseEnter={pauseProgressBarIndicatorHandler}
+      onMouseLeave={pauseProgressBarIndicatorHandler}
+    >
       <h5>{title ? title : type}</h5>
       <p>{message}</p>
       <button
