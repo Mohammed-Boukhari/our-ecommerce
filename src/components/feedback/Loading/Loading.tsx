@@ -3,8 +3,9 @@ import CartSkeleton from "../skeletons/CartSkeleton/CartSkeleton";
 import ProductSkeleton from "../skeletons/ProductSkeleton/ProductSkeleton";
 import LottieHandler from "../LottieHandler/LottieHandler";
 
-/* type */ import { TLoading } from "@types";
 import TableSkeleton from "../skeletons/TableSkeleton/TableSkeleton";
+
+import { TLoading } from "@types";
 
 type TLoadingProps = {
   status: TLoading;
@@ -26,7 +27,7 @@ const Loading = ({
   children,
   type = "category",
 }: TLoadingProps) => {
-  const Component = skeletonsTypes[type];
+  const Component: () => JSX.Element = skeletonsTypes[type];
 
   if (status === "pending") {
     return <Component />;

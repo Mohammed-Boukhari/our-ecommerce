@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
+
 import actGetCategories from "./act/actGetCategories";
+
 import { TLoading, TCategory, isString } from "@types";
 
 interface ICategories {

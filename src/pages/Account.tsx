@@ -10,7 +10,10 @@ const Account = () => {
         <title>our eCommerce | Account</title>
       </head>
 
+      {/* Heading title */}
       <Heading title="Account Info" />
+      {/*=== Heading title ===*/}
+
       <ul>
         <li>First Name: {accountInfo?.firstName}</li>
         <li>Last Name: {accountInfo?.lastName}</li>

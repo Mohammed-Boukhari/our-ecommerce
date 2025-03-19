@@ -1,4 +1,5 @@
 import Lottie from "lottie-react";
+
 import notFound from "@assets/lottieFiles/notFound.json";
 import empty from "@assets/lottieFiles/empty.json";
 import error from "@assets/lottieFiles/error.json";
@@ -20,7 +21,7 @@ const lottieFilesMap = {
 
 const LottieHandler = ({ type, message }: LottieHandlerProps) => {
   const animation = lottieFilesMap[type];
-  const messageStyle =
+  const messageStyle: React.CSSProperties =
     type === "error"
       ? { fontSize: "19px", color: "red" }
       : { fontSize: "19px", marginBlock: "30px" };

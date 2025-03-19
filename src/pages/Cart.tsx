@@ -20,7 +20,10 @@ const Cart = () => {
         <title>our eCommerce | Cart</title>
       </head>
 
+      {/* Heading title */}
       <Heading title={"Cart"} />
+      {/*=== Heading title ===*/}
+
       <Loading status={loading} error={error} type="cart">
         <>
           {products.length ? (

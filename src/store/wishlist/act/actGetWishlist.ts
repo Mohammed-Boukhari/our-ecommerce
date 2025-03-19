@@ -1,11 +1,12 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { axiosErrorHandler } from "@utils";
-import { TProduct } from "@types";
-import { RootState } from "@store/index";
 
-type TDataType = "ProductFullInfo" | "ProductIds";
+import { RootState } from "@store/index";
+import { TProduct } from "@types";
+
 type TResponse = TProduct[];
+type TDataType = "ProductFullInfo" | "ProductIds";
 
 const actGetWishlist = createAsyncThunk(
   "wishlist/actGetWishlist",

@@ -13,8 +13,11 @@ const Categories = () => {
       <head>
         <title>our eCommerce | Categories</title>
       </head>
-
+      
+      {/*=== Heading title ===*/}
       <Heading title={"Categories"} />
+      {/*=== Heading title ===*/}
+
       <Loading status={loading} error={error} type="category">
         <GridList<TCategory>
           records={records}

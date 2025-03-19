@@ -1,5 +1,6 @@
-import ContentLoader from "react-content-loader";
 import { Row, Col } from "react-bootstrap";
+
+import ContentLoader from "react-content-loader";
 
 const CartSkeleton = () => {
   return (

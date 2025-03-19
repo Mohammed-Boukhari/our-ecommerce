@@ -20,7 +20,11 @@ const Orders = () => {
       <head>
         <title>our eCommerce | Orders</title>
       </head>
+
+      {/* Heading title */}
       <Heading title="My Order" />
+      {/*=== Heading title ===*/}
+
       <Modal show={showModal} onHide={() => closeModalHandler()}>
         <Modal.Header closeButton>
           <Modal.Title>Products Details</Modal.Title>

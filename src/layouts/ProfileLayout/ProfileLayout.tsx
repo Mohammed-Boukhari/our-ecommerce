@@ -1,5 +1,5 @@
-import { Col, ListGroup, Row } from "react-bootstrap";
 import { NavLink, Outlet } from "react-router-dom";
+import { Col, ListGroup, Row } from "react-bootstrap";
 
 const ProfileLayout = () => {
   return (

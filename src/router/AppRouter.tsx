@@ -1,15 +1,12 @@
 import { lazy, Suspense } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-
 // layouts
 const MainLayout = lazy(() => import("@layouts/MainLayout/MainLayout"));
 const ProfileLayout = lazy(
   () => import("@layouts/ProfileLayout/ProfileLayout")
 );
-
 // components
 import { LottieHandler, PageSuspenseFallback } from "@components/feedback";
-
 // pages
 const Home = lazy(() => import("@pages/Home"));
 const Categories = lazy(() => import("@pages/Categories"));
@@ -21,7 +18,6 @@ const Cart = lazy(() => import("@pages/Cart"));
 const Wishlist = lazy(() => import("@pages/Wishlist"));
 const Account = lazy(() => import("@pages/Account"));
 const Orders = lazy(() => import("@pages/Orders"));
-
 // error pages
 import Error from "@pages/Error";
 // protect routes

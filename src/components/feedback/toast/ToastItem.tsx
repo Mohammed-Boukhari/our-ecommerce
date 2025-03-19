@@ -2,10 +2,11 @@ import { useCallback, useEffect, useState } from "react";
 import { useAppDispatch } from "@store/hooks";
 import { removeToast, stopDelayAppearance } from "@store/toasts/toastsSlice";
 
-import styles from "./styles.module.css";
 import { TToast } from "@types";
 
+import styles from "./styles.module.css";
 const { toastItem } = styles;
+
 type TTostItemProps = TToast;
 
 const ToastItem = ({
@@ -17,13 +18,13 @@ const ToastItem = ({
   onCloseToast,
 }: TTostItemProps) => {
   const dispatch = useAppDispatch();
-  const [progressBarINdicator, setProgressBarINdicator] = useState(0);
+  const [progressBarINdicator, setProgressBarINdicator] = useState<number>(0);
   const [pauseProgressBarIndicator, setPauseProgressBarIndicator] =
-    useState(false);
+    useState<boolean>(false);
 
-  const progressBarScale = 100;
-  const duration = 4000;
-  const intervalTime = duration / 100;
+  const progressBarScale: number = 100;
+  const duration: number = 4000;
+  const intervalTime: number = duration / 100;
 
   const closeToastHandler = useCallback(() => {
     dispatch(removeToast(id));
@@ -38,7 +39,7 @@ const ToastItem = ({
   useEffect(() => {
     if (delayAppearance) return;
 
-    const timerId = setInterval(() => {
+    const timerId: number = setInterval(() => {
       setProgressBarINdicator((prevState) => {
         if (!pauseProgressBarIndicator) {
           if (prevState < progressBarScale) {

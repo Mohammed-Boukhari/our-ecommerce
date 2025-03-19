@@ -27,7 +27,10 @@ const Login = () => {
         <title>our eCommerce | Login</title>
       </head>
 
+      {/* Heading title */}
       <Heading title={"User Login"} />
+      {/*=== Heading title ===*/}
+
       <Row>
         <Col md={{ span: 6, offset: 3 }}>
           {searchParams.get("message") === "login_required" && (

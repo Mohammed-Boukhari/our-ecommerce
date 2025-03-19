@@ -1,17 +1,22 @@
+import { useEffect } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
+import {
+  useSearchParams,
+  useNavigate,
+  NavigateFunction,
+} from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
 import {
   actAuthLogin,
   resetUI,
 } from "@store/authentication/authenticationSlice";
-import { useSearchParams, useNavigate } from "react-router-dom";
-import { SubmitHandler, useForm } from "react-hook-form";
+
 import { LoginSchema, TLoginSchema } from "@validations/loginSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useEffect } from "react";
 
 const uesLogin = () => {
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
+  const navigate: NavigateFunction = useNavigate();
 
   const [searchParams, setSearchParams] = useSearchParams();
 

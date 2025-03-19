@@ -12,7 +12,11 @@ const Wishlist = () => {
       <head>
         <title>our eCommerce | Wishlist</title>
       </head>
+
+      {/* Heading title */}
       <Heading title={"Your Wishlist"} />
+      {/*=== Heading title ===*/}
+
       <Loading status={loading} error={error}>
         <GridList<TProduct>
           records={records}

@@ -15,7 +15,10 @@ const Products = () => {
         <title>our eCommerce | Products</title>
       </head>
 
+      {/* Heading title */}
       <Heading title={`${paramsPrefix?.toUpperCase()} Products`} />
+      {/*=== Heading title ===*/}
+
       <Loading status={loading} error={error} type="product">
         <GridList<TProduct>
           records={productsFullInfo}

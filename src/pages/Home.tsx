@@ -9,7 +9,6 @@ const Home = () => {
       {/* Heading title */}
       <Heading title={"Home"} />
       {/*=== Heading title ===*/}
-      
     </>
   );
 };

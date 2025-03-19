@@ -57,6 +57,7 @@ const ordersSlice = createSlice({
     });
   },
 });
+
 export { actPlaceOrder, actGetOrders };
 export const { resetOrderStatus } = ordersSlice.actions;
 export default ordersSlice.reducer;

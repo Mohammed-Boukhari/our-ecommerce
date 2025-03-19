@@ -1,16 +1,15 @@
 import { useEffect } from "react";
-
+import { Params, useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
-import { useParams } from "react-router-dom";
 import {
   actGetProductsByCatPrefix,
   cleanUpProductsRecords,
 } from "@store/products/productsSlice";
 
 const useProducts = () => {
-  const params = useParams();
+  const params: Readonly<Params<string>> = useParams();
   const dispatch = useAppDispatch();
-  const paramsPrefix = params.prefix;
+  const paramsPrefix: string | undefined = params.prefix;
   const { loading, error, records } = useAppSelector((state) => state.products);
   const cartItems = useAppSelector((state) => state.cart.items);
   const wishlistItemsId = useAppSelector((state) => state.wishlist.itemsId);

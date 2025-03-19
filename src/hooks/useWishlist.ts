@@ -7,6 +7,7 @@ import { useAppDispatch, useAppSelector } from "@store/hooks";
 
 const useWishlist = () => {
   const dispatch = useAppDispatch();
+
   const { loading, error, productsFullInfo } = useAppSelector(
     (state) => state.wishlist
   );

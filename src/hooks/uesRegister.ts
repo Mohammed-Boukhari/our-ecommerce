@@ -1,17 +1,18 @@
+import { useEffect } from "react";
+import { useForm, SubmitHandler } from "react-hook-form";
+import { NavigateFunction, useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
 import {
   actAuthRegister,
   resetUI,
 } from "@store/authentication/authenticationSlice";
-import { useForm, SubmitHandler } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
 import useCheckEmailAvailability from "@hooks/useCheckEmailAvailability";
+
 import { signUpSchema, TSignUpType } from "@validations/signUpSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useEffect } from "react";
 const uesRegister = () => {
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
+  const navigate: NavigateFunction = useNavigate();
   const { error, loading, accessToken } = useAppSelector((state) => state.auth);
 
   const {

@@ -1,5 +1,5 @@
-import { Form } from "react-bootstrap";
 import { Path, FieldValues, UseFormRegister } from "react-hook-form";
+import { Form } from "react-bootstrap";
 
 type TInputProps<TFieldValue extends FieldValues> = {
   label: string;
@@ -12,6 +12,7 @@ type TInputProps<TFieldValue extends FieldValues> = {
   success?: string;
   disabled?: boolean;
 };
+
 const Input = <TFieldValue extends FieldValues>({
   type = "text",
   name,

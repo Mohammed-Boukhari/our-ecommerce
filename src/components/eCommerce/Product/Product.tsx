@@ -1,17 +1,18 @@
 import { memo, useEffect, useState } from "react";
+import { Button, Modal, Spinner } from "react-bootstrap";
+
 import { useAppDispatch } from "@store/hooks";
 import { addToCart } from "@store/cart/cartSlice";
 import { actLikeToggle } from "@store/wishlist/wishlistSlice";
 import { addToast } from "@store/toasts/toastsSlice";
-
-import { Button, Modal, Spinner } from "react-bootstrap";
-import { TProduct } from "@types";
 
 import ProductInfo from "../ProductInfo/ProductInfo";
 
 // FIXME: import svg element for product
 import Like from "@assets/svg/like.svg?react";
 import LikeFill from "@assets/svg/like-fill.svg?react";
+
+import { TProduct } from "@types";
 
 import styles from "./style.module.css";
 
@@ -30,12 +31,13 @@ const Product = memo(
   }: TProduct) => {
     const dispatch = useAppDispatch();
 
-    const [showModal, setShowModal] = useState(false);
-    const [isBTNDisabled, setIsBTNDisabled] = useState(false);
-    const [isLoading, setIsLoading] = useState(false);
+    const [showModal, setShowModal] = useState<boolean>(false);
+    const [isBTNDisabled, setIsBTNDisabled] = useState<boolean>(false);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
-    const currentRemainingQuantity = max - (quantity ?? 0);
-    const quantityReachedToMax = currentRemainingQuantity <= 0 ? true : false;
+    const currentRemainingQuantity: number = max - (quantity ?? 0);
+    const quantityReachedToMax: boolean =
+      currentRemainingQuantity <= 0 ? true : false;
 
     useEffect(() => {
       if (!isBTNDisabled) {

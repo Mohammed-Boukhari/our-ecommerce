@@ -4,6 +4,7 @@ import {
   getCartTotalQuantitySelector,
   itemQuantityAvailabilityCheckingSelector,
 } from "./selector";
+
 import { TProduct, TLoading } from "@types";
 
 interface ICartState {
@@ -71,13 +72,11 @@ export {
   actGetProductsByItems,
   itemQuantityAvailabilityCheckingSelector,
 };
-
 export const {
   addToCart,
   cartItemChangeQuantity,
   cartItemRemove,
   clearCartAfterPlaceOrder,
 } = cartSlice.actions;
-
 export const { cartsFullInfoCleanUp } = cartSlice.actions;
 export default cartSlice.reducer;

@@ -1,4 +1,5 @@
 import { Col, Row } from "react-bootstrap";
+
 import ContentLoader from "react-content-loader";
 
 const CategorySkeletons = () => {

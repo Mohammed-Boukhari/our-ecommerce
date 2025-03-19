@@ -8,6 +8,8 @@ import {
 } from "@store/cart/cartSlice";
 import { resetOrderStatus } from "@store/orders/ordersSlice";
 
+import { TLoading } from "@types";
+
 const useCart = () => {
   const dispatch = useAppDispatch();
 
@@ -15,9 +17,13 @@ const useCart = () => {
     (state) => state.cart
   );
 
-  const userAccessToken = useAppSelector((state) => state.auth.accessToken);
+  const userAccessToken: string | null = useAppSelector(
+    (state) => state.auth.accessToken
+  );
 
-  const placeOrderStatus = useAppSelector((state) => state.orders.loading);
+  const placeOrderStatus: TLoading = useAppSelector(
+    (state) => state.orders.loading
+  );
 
   const products = productFullInfo.map((el) => ({
     ...el,

@@ -1,5 +1,5 @@
-import { TProduct } from "@types";
 import CartItem from "../CartItem/CartItem";
+import { TProduct } from "@types";
 
 type TCartItemListProps = {
   products: TProduct[];
@@ -19,6 +19,7 @@ const CartItemList = ({
       removeItemHandler={removeItemHandler}
     />
   ));
+
   return <div>{renderList}</div>;
 };
 

@@ -1,16 +1,18 @@
 import { useState } from "react";
-import { useAppDispatch } from "@store/hooks";
-import { actPlaceOrder } from "@store/orders/ordersSlice";
-
 import { Button, Modal, Spinner } from "react-bootstrap";
 
+import { useAppDispatch } from "@store/hooks";
+import { actPlaceOrder } from "@store/orders/ordersSlice";
+import { clearCartAfterPlaceOrder } from "@store/cart/cartSlice";
+
 import { TProduct } from "@types";
+
+import styles from "./style.module.css";
+
 type TCartSubtotalProps = {
   products: TProduct[];
   userAccessToken: string | null;
 };
-import styles from "./style.module.css";
-import { clearCartAfterPlaceOrder } from "@store/cart/cartSlice";
 
 const CartSubtotalPrice = ({
   products,
@@ -18,14 +20,13 @@ const CartSubtotalPrice = ({
 }: TCartSubtotalProps) => {
   const dispatch = useAppDispatch();
 
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const [showModal, setShowModal] = useState<boolean>(false);
 
-  const [showModal, setShowModal] = useState(false);
-
-  const subtotalPrice = products.reduce((accumulator, el) => {
-    const price = el.price;
-    const quantity = el.quantity;
+  const subtotalPrice: number = products.reduce((accumulator, el) => {
+    const price: number = el.price;
+    const quantity: number | undefined = el.quantity;
 
     if (quantity && typeof quantity === "number") {
       return accumulator + price * quantity;

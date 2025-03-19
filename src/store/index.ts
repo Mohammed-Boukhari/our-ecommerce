@@ -36,11 +36,6 @@ const cartPersistConfig = {
   storage,
   whitelist: ["items"],
 };
-// const wishlistPersistConfig = {
-//   key: "wishlist",
-//   storage,
-//   whitelist: ["itemsId"],
-// };
 
 const rootReducer = combineReducers({
   auth: persistReducer(authPersistConfig, auth),
@@ -53,6 +48,7 @@ const rootReducer = combineReducers({
 });
 
 const persistedReducer = persistReducer(rootPersistConfig, rootReducer);
+const regExpPaths: RegExp = /^toasts\.records\.\d+\.onCloseToast$/;
 
 const store = configureStore({
   reducer: persistedReducer,
@@ -68,7 +64,7 @@ const store = configureStore({
           REGISTER,
           "toasts/addToast",
         ],
-        ignoredPaths: [/^toasts\.records\.\d+\.onCloseToast$/],
+        ignoredPaths: [regExpPaths],
       },
     }),
 });

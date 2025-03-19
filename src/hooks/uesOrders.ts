@@ -8,7 +8,7 @@ const uesOrders = () => {
   const dispatch = useAppDispatch();
 
   const { error, loading, orderList } = useAppSelector((state) => state.orders);
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState<boolean>(false);
   const [selectedProduct, setSelectedProduct] = useState<TProduct[]>([]);
 
   const viewDetailsHandler = (id: number) => {
@@ -31,6 +31,7 @@ const uesOrders = () => {
       dispatch(resetOrderStatus());
     };
   }, [dispatch]);
+
   return {
     error,
     loading,

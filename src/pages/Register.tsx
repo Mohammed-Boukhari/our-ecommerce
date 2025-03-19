@@ -26,8 +26,10 @@ const Register = () => {
       <head>
         <title>our eCommerce | Register</title>
       </head>
-
+      {/* Heading title */}
       <Heading title={"User Registration"} />
+      {/*=== Heading title ===*/}
+
       <Row>
         <Col md={{ span: 6, offset: 3 }}>
           <Form onSubmit={handleSubmit(submitForm)} className="mb-2 mt-2">
