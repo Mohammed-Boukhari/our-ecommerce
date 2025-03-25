@@ -1,6 +1,8 @@
 import { LottieHandler } from "@components/feedback";
 import { Row, Col } from "react-bootstrap";
 
+import "./gridList.css";
+
 type TGridListProps<T> = {
   records: T[];
   renderItem: (record: T) => React.ReactNode;
@@ -32,7 +34,7 @@ const GridList = <T extends THasId>({
       <LottieHandler type={"empty"} message={emptyMessage} />
     );
 
-  return <Row>{categoriesList}</Row>;
+  return <Row className=" gridList">{categoriesList}</Row>;
 };
 
 export default GridList;

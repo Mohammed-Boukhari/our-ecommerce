@@ -1,12 +1,13 @@
 .maximumNotice {
   font-size: 12px;
   margin-bottom: 7px;
+  color: var(--color);
 }
 .wishListBTN {
   position: absolute;
   top: 7px;
   right: 7px;
-  background-color: #fff;
+  background: #fff;
   width: 28px;
   height: 28px;
   border-radius: 5px;

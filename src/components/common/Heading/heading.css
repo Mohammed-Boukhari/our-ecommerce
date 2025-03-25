@@ -1,0 +1,8 @@
+.heading {
+  color: var(--color);
+}
+@media (width < 1367px) {
+  .heading {
+    font-size: 20px !important;
+  }
+}

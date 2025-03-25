@@ -7,6 +7,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  color: var(--color);
 }
 
 .headerLogo {
@@ -24,4 +25,13 @@
 .headerLogo h1 span {
   display: block;
   margin-right: 5px;
+}
+
+@media (width < 1367px) {
+  .headerContainer {
+    padding: 10px 0;
+  }
+  .headerLogo {
+    font-size: 2rem;
+  }
 }

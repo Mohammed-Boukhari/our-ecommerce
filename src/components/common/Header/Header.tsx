@@ -6,9 +6,17 @@ import { actGetWishlist } from "@store/wishlist/wishlistSlice";
 import HeaderLeftBar from "./HeaderLeftBar/HeaderLeftBar";
 
 import { NavLink } from "react-router-dom";
-import { Badge, Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
+import {
+  Badge,
+  Navbar,
+  Nav,
+  Container,
+  NavDropdown,
+  Button,
+} from "react-bootstrap";
 
 import styles from "./style.module.css";
+import { toggleTheme } from "@store/theme/themeSlice";
 
 const { headerContainer, headerLogo } = styles;
 
@@ -16,12 +24,21 @@ const Header = () => {
   const dispatch = useAppDispatch();
 
   const { accessToken, user } = useAppSelector((state) => state.auth);
+  const theme: boolean = useAppSelector((state) => state.theme.isDarkMode);
 
   useEffect(() => {
     if (accessToken) {
       dispatch(actGetWishlist("ProductIds"));
     }
   }, [dispatch, accessToken]);
+
+  useEffect(() => {
+    if (theme) {
+      document.body.classList.add("dark-mode");
+    } else {
+      document.body.classList.remove("dark-mode");
+    }
+  }, [theme]);
 
   return (
     <header>
@@ -32,6 +49,16 @@ const Header = () => {
           <span>Our</span> <Badge bg="info">eCom</Badge>
         </h1>
         {/*=== Header Logo ===*/}
+
+        <div>
+          <Button
+            variant="info"
+            style={{ color: "rgb(60 60 45)" }}
+            onClick={() => dispatch(toggleTheme())}
+          >
+            {theme ? "dark" : "light"}
+          </Button>
+        </div>
 
         {/* FIXME: component Header Left Bar */}
         <HeaderLeftBar />

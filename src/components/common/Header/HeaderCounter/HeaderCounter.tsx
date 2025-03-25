@@ -30,7 +30,7 @@ const HeaderCounter = ({
     }
     setIsAnimate(true);
 
-    const debounce:number = setTimeout(() => {
+    const debounce: number = setTimeout(() => {
       setIsAnimate(false);
     }, 300);
 

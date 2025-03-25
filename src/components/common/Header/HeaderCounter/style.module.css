@@ -53,3 +53,10 @@
     transform: scale(1);
   }
 }
+
+@media (width < 1367px) {
+  .container h3 {
+    font-size: 13px;
+    margin-left: 3px;
+  }
+}

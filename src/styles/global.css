@@ -1,3 +1,10 @@
 /* 
     global styles
 */
+
+@import url("./var.css");
+
+body.dark-mode {
+  background: var(--background);
+  color: var(--color);
+}

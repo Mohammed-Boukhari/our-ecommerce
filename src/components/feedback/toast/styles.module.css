@@ -35,3 +35,15 @@
   bottom: 0;
   left: 0;
 }
+
+@media (width < 1367px) {
+  .toastList {
+    width: 300px;
+  }
+  .toastItem h5 {
+    font-size: 17px;
+  }
+  .toastItem p {
+    font-size: 13px;
+  }
+}

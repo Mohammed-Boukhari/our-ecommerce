@@ -13,7 +13,7 @@ const Categories = () => {
       <head>
         <title>our eCommerce | Categories</title>
       </head>
-      
+
       {/*=== Heading title ===*/}
       <Heading title={"Categories"} />
       {/*=== Heading title ===*/}
