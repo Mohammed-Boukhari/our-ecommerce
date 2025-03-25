@@ -1,0 +1,336 @@
+{
+  "users": [
+    {
+      "email": "mohamed750boukhari@gmail.com",
+      "password": "$2a$10$O3FFMhm3h2tWqdPtnNeTsOAkwxN7k0xTWaC2IxeYGahkDQixFhMMK",
+      "firstName": "mohamed",
+      "lastName": "ahmed",
+      "id": 1
+    },
+    {
+      "email": "mohamed750byukhari@gmail.com",
+      "password": "$2a$10$hZoxpMMPRhwV6xrQbfjTAOg89SXVU8e/.BJ/Yczr8qaEJFGLa/Ic2",
+      "firstName": "mohame",
+      "lastName": "boukhariy",
+      "id": 2
+    },
+    {
+      "email": "asdfshqwdaf@gmail.com",
+      "password": "$2a$10$ySk6NQUmd57RqKwiNZs7tuXnFzQFbmFNRBH/oQ4jdTrkKPYTQVdv6",
+      "firstName": "ahmed",
+      "lastName": "aaaaaaahmed",
+      "id": 3
+    },
+    {
+      "email": "ahmedsdfasdfd@gmail.com",
+      "password": "$2a$10$nz9CpWS0S4ZJrvlsyYBSoOSXxrSCMKRlKnoRpo6JkWkYo.VH9E0BC",
+      "firstName": "ahmedd",
+      "lastName": "sd",
+      "id": 4
+    }
+  ],
+  "wishlist": [
+    {
+      "userId": 1,
+      "productId": 2,
+      "id": 12
+    },
+    {
+      "userId": 1,
+      "productId": 3,
+      "id": 13
+    },
+    {
+      "userId": 1,
+      "productId": 1,
+      "id": 14
+    },
+    {
+      "userId": 1,
+      "productId": 5,
+      "id": 15
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "title": "men",
+      "prefix": "men",
+      "img": "https://cdn-eu.dynamicyield.com/api/9876644/images/cfb357649428__hp-w12-22032022-h_m-men.jpg"
+    },
+    {
+      "id": 2,
+      "title": "women",
+      "prefix": "women",
+      "img": "https://cdn-eu.dynamicyield.com/api/9876644/images/30d354267a09b__hp-w12-22032022-h_m-women_dresses.jpg"
+    },
+    {
+      "id": 3,
+      "title": "kids",
+      "prefix": "kids",
+      "img": "https://cdn-eu.dynamicyield.com/api/9876644/images/37d243d334c63__hp-w12-22032022-h_m-kids1.jpg"
+    },
+    {
+      "id": 4,
+      "title": "baby",
+      "prefix": "baby",
+      "img": "https://cdn-eu.dynamicyield.com/api/9876644/images/28948d47ae6e8__h_m-w39-28092022-4066c-1x1.jpg"
+    },
+    {
+      "id": 5,
+      "title": "sport",
+      "prefix": "sport",
+      "img": "https://cdn-eu.dynamicyield.com/api/9876644/images/1dda9ae79a671__h_m-w40-06102022-7416b-1x1.jpg"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "title": "Jersey top",
+      "price": 249,
+      "cat_prefix": "men",
+      "img": "https://media.boohooman.com/i/boohooman/bmm99527_black_xl.jpg?$product_image_category_page$&fmt=webp",
+      "max": 4
+    },
+    {
+      "id": 2,
+      "title": "Regular Fit Jersey top",
+      "price": 229,
+      "cat_prefix": "men",
+      "img": "https://media.boohooman.com/i/boohooman/mzz23512_black_xl.jpg?$product_image_category_page$&fmt=webp",
+      "max": 4
+    },
+    {
+      "id": 3,
+      "title": "Cotton polo shirt",
+      "price": 200,
+      "cat_prefix": "men",
+      "img": "https://media.boohooman.com/i/boohooman/bbb05954_black_xl?$product_image_category_page_tablet_landscape_pro$&fmt=webp",
+      "max": 3
+    },
+    {
+      "id": 4,
+      "title": "Cotton t-shirt",
+      "price": 100,
+      "cat_prefix": "women",
+      "img": "https://cottonon.com/on/demandware.static/-/Library-Sites-cog-megastore-shared-library/default/dwadea8143/group/PLP/SG/C_3477310_PLP_SHOPPABLE_CUT_AND_SEW_US_3479379_0125_01.jpg",
+      "max": 2
+    },
+    {
+      "id": 5,
+      "title": "Sweatshirt shorts",
+      "price": 300,
+      "cat_prefix": "women",
+      "img": "https://cottonon.com/dw/image/v2/BBDS_PRD/on/demandware.static/-/Sites-catalog-master-women/default/dw6a8c0a89/2059363/2059363-05-2.jpg?sw=400&amp;sh=600&amp;sm=fit",
+      "max": 3
+    },
+    {
+      "id": 6,
+      "title": "Velour top",
+      "price": 300,
+      "cat_prefix": "kids",
+      "img": "https://cottonon.com/dw/image/v2/BBDS_PRD/on/demandware.static/-/Sites-catalog-master-kids/default/dwa2e66485/7347621/7347621-02-1.jpg?sw=800&sh=1200&sm=fit",
+      "max": 26
+    },
+    {
+      "id": 9,
+      "title": "Pile all-in-one suit with ears",
+      "price": 500,
+      "cat_prefix": "baby",
+      "img": "https://eg.hm.com/assets/styles/HNM/10803913/c334b471ad8f564ed1b5dd410c95d94544ee0904/2/image-thumb__1594613__product_listing/5941e37dccc9b0172ac2ab7c266c1cd794cb547f.jpg",
+      "max": 2
+    },
+    {
+      "id": 17,
+      "title": "Regular Fit football shirt",
+      "price": 449,
+      "cat_prefix": "sport",
+      "img": "https://eg.hm.com/assets/styles/HNM/14472541/cb9d35f1480ce5c8b0be39ad7fd35ab9f8004ce0/2/image-thumb__3453052__product_listing/70408034bd9792a93abbc8ad322565337f535e24.jpg",
+      "max": 2
+    }
+  ],
+  "orders": [
+    {
+      "userId": 1,
+      "items": [
+        {
+          "id": 1,
+          "title": "Jersey top",
+          "price": 249,
+          "img": "https://media.boohooman.com/i/boohooman/bmm99527_black_xl.jpg?$product_image_category_page$&fmt=webp",
+          "quantity": 4
+        },
+        {
+          "id": 2,
+          "title": "Regular Fit Jersey top",
+          "price": 229,
+          "img": "https://media.boohooman.com/i/boohooman/mzz23512_black_xl.jpg?$product_image_category_page$&fmt=webp",
+          "quantity": 4
+        },
+        {
+          "id": 3,
+          "title": "Cotton polo shirt",
+          "price": 200,
+          "img": "https://media.boohooman.com/i/boohooman/bbb05954_black_xl?$product_image_category_page_tablet_landscape_pro$&fmt=webp",
+          "quantity": 3
+        },
+        {
+          "id": 4,
+          "title": "Cotton t-shirt",
+          "price": 100,
+          "img": "https://cottonon.com/on/demandware.static/-/Library-Sites-cog-megastore-shared-library/default/dwadea8143/group/PLP/SG/C_3477310_PLP_SHOPPABLE_CUT_AND_SEW_US_3479379_0125_01.jpg",
+          "quantity": 2
+        },
+        {
+          "id": 5,
+          "title": "Sweatshirt shorts",
+          "price": 300,
+          "img": "https://cottonon.com/dw/image/v2/BBDS_PRD/on/demandware.static/-/Sites-catalog-master-women/default/dw6a8c0a89/2059363/2059363-05-2.jpg?sw=400&amp;sh=600&amp;sm=fit",
+          "quantity": 1
+        }
+      ],
+      "subtotal": 3012,
+      "id": 1
+    },
+    {
+      "userId": 1,
+      "items": [
+        {
+          "id": 1,
+          "title": "Jersey top",
+          "price": 249,
+          "img": "https://media.boohooman.com/i/boohooman/bmm99527_black_xl.jpg?$product_image_category_page$&fmt=webp",
+          "quantity": 4
+        },
+        {
+          "id": 2,
+          "title": "Regular Fit Jersey top",
+          "price": 229,
+          "img": "https://media.boohooman.com/i/boohooman/mzz23512_black_xl.jpg?$product_image_category_page$&fmt=webp",
+          "quantity": 4
+        },
+        {
+          "id": 4,
+          "title": "Cotton t-shirt",
+          "price": 100,
+          "img": "https://cottonon.com/on/demandware.static/-/Library-Sites-cog-megastore-shared-library/default/dwadea8143/group/PLP/SG/C_3477310_PLP_SHOPPABLE_CUT_AND_SEW_US_3479379_0125_01.jpg",
+          "quantity": 2
+        },
+        {
+          "id": 5,
+          "title": "Sweatshirt shorts",
+          "price": 300,
+          "img": "https://cottonon.com/dw/image/v2/BBDS_PRD/on/demandware.static/-/Sites-catalog-master-women/default/dw6a8c0a89/2059363/2059363-05-2.jpg?sw=400&amp;sh=600&amp;sm=fit",
+          "quantity": 3
+        }
+      ],
+      "subtotal": 3012,
+      "id": 2
+    },
+    {
+      "userId": 1,
+      "items": [
+        {
+          "id": 6,
+          "title": "Velour top",
+          "price": 300,
+          "img": "https://eg.hm.com/assets/styles/HNM/14478215/543d925539f4a3b92a79df2dfe46d5d481e1c7ae/2/image-thumb__3463278__product_listing/c1417d02c7a93e6d2aca7965003b4f7d490f0ae8.jpg",
+          "quantity": 2
+        }
+      ],
+      "subtotal": 600,
+      "id": 3
+    },
+    {
+      "userId": 1,
+      "items": [
+        {
+          "id": 1,
+          "title": "Jersey top",
+          "price": 249,
+          "img": "https://media.boohooman.com/i/boohooman/bmm99527_black_xl.jpg?$product_image_category_page$&fmt=webp",
+          "quantity": 2
+        },
+        {
+          "id": 2,
+          "title": "Regular Fit Jersey top",
+          "price": 229,
+          "img": "https://media.boohooman.com/i/boohooman/mzz23512_black_xl.jpg?$product_image_category_page$&fmt=webp",
+          "quantity": 1
+        },
+        {
+          "id": 4,
+          "title": "Cotton t-shirt",
+          "price": 100,
+          "img": "https://cottonon.com/on/demandware.static/-/Library-Sites-cog-megastore-shared-library/default/dwadea8143/group/PLP/SG/C_3477310_PLP_SHOPPABLE_CUT_AND_SEW_US_3479379_0125_01.jpg",
+          "quantity": 2
+        },
+        {
+          "id": 5,
+          "title": "Sweatshirt shorts",
+          "price": 300,
+          "img": "https://cottonon.com/dw/image/v2/BBDS_PRD/on/demandware.static/-/Sites-catalog-master-women/default/dw6a8c0a89/2059363/2059363-05-2.jpg?sw=400&amp;sh=600&amp;sm=fit",
+          "quantity": 3
+        }
+      ],
+      "subtotal": 1827,
+      "id": 4
+    },
+    {
+      "userId": 2,
+      "items": [
+        {
+          "id": 4,
+          "title": "Cotton t-shirt",
+          "price": 100,
+          "img": "https://cottonon.com/on/demandware.static/-/Library-Sites-cog-megastore-shared-library/default/dwadea8143/group/PLP/SG/C_3477310_PLP_SHOPPABLE_CUT_AND_SEW_US_3479379_0125_01.jpg",
+          "quantity": 1
+        },
+        {
+          "id": 6,
+          "title": "Velour top",
+          "price": 300,
+          "img": "https://cottonon.com/dw/image/v2/BBDS_PRD/on/demandware.static/-/Sites-catalog-master-kids/default/dwa2e66485/7347621/7347621-02-1.jpg?sw=800&sh=1200&sm=fit",
+          "quantity": 4
+        }
+      ],
+      "subtotal": 1300,
+      "id": 5
+    },
+    {
+      "userId": 3,
+      "items": [
+        {
+          "id": 1,
+          "title": "Jersey top",
+          "price": 249,
+          "img": "https://media.boohooman.com/i/boohooman/bmm99527_black_xl.jpg?$product_image_category_page$&fmt=webp",
+          "quantity": 1
+        },
+        {
+          "id": 2,
+          "title": "Regular Fit Jersey top",
+          "price": 229,
+          "img": "https://media.boohooman.com/i/boohooman/mzz23512_black_xl.jpg?$product_image_category_page$&fmt=webp",
+          "quantity": 1
+        },
+        {
+          "id": 3,
+          "title": "Cotton polo shirt",
+          "price": 200,
+          "img": "https://media.boohooman.com/i/boohooman/bbb05954_black_xl?$product_image_category_page_tablet_landscape_pro$&fmt=webp",
+          "quantity": 1
+        },
+        {
+          "id": 4,
+          "title": "Cotton t-shirt",
+          "price": 100,
+          "img": "https://cottonon.com/on/demandware.static/-/Library-Sites-cog-megastore-shared-library/default/dwadea8143/group/PLP/SG/C_3477310_PLP_SHOPPABLE_CUT_AND_SEW_US_3479379_0125_01.jpg",
+          "quantity": 2
+        }
+      ],
+      "subtotal": 878,
+      "id": 6
+    }
+  ]
+}
